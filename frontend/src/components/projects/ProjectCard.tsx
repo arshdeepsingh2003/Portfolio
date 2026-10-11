@@ -33,17 +33,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
     <CardShell
       as="article"
       padding="none"
-      className={`flex flex-col h-full overflow-hidden bg-surface border-border hover:border-forest/40 transition-all duration-200 ${className}`}
+      className={`flex flex-col h-full overflow-hidden bg-surface dark:bg-[#161D1A] border-border dark:border-white/10 hover:border-forest/40 dark:hover:border-emerald-500/40 hover:-translate-y-1.5 hover:shadow-elevated transition-all duration-300 ease-out group ${className}`}
     >
       {/* Media or Consistent Editorial Fallback Header */}
-      <div className="relative aspect-[16/9] w-full bg-surface-muted border-b border-border/80 flex items-center justify-center overflow-hidden">
+      <div className="relative aspect-[16/9] w-full bg-surface-muted dark:bg-[#131916] border-b border-border/80 dark:border-white/10 flex items-center justify-center overflow-hidden">
         {showFallbackImage ? (
-          <div className="w-full h-full p-6 flex flex-col items-center justify-center text-center bg-gradient-to-b from-surface to-surface-muted select-none">
-            <div className="w-12 h-12 rounded-sm bg-forest/5 border border-forest/15 flex items-center justify-center text-forest mb-3">
+          <div className="w-full h-full p-6 flex flex-col items-center justify-center text-center bg-gradient-to-b from-surface to-surface-muted dark:from-[#18201D] dark:to-[#131916] select-none">
+            <div className="w-12 h-12 rounded-sm bg-forest/5 dark:bg-emerald-500/10 border border-forest/15 dark:border-emerald-500/20 flex items-center justify-center text-forest dark:text-emerald-400 mb-3 transition-transform duration-300 ease-out group-hover:scale-110">
               {getFallbackIcon()}
             </div>
-            <p className="font-serif text-lg text-forest font-medium">{project.title}</p>
-            <p className="text-xs text-charcoal-muted mt-1 font-mono">
+            <p className="font-serif text-lg text-forest dark:text-ivory font-medium">{project.title}</p>
+            <p className="text-xs text-charcoal-muted dark:text-[#A8B2AC] mt-1 font-mono">
               Visual preview pending owner review
             </p>
             <div className="mt-3">
@@ -53,13 +53,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
             </div>
           </div>
         ) : (
-          <img
-            src={project.image!}
-            alt={`Preview screenshot of ${project.title}`}
-            onError={() => setImageError(true)}
-            className="w-full h-full object-cover object-top"
-            loading="lazy"
-          />
+          <>
+            <img
+              src={project.image!}
+              alt={`Preview screenshot of ${project.title}`}
+              onError={() => setImageError(true)}
+              className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          </>
         )}
       </div>
 
@@ -70,12 +73,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
           {project.projectType && (
             <Badge variant={project.projectType === 'Major Project' ? 'plum' : 'neutral'} size="sm">
               {project.projectType}
-            </Badge>
-          )}
-
-          {project.year && (
-            <Badge variant="neutral" size="sm">
-              {project.year}
             </Badge>
           )}
 
@@ -105,18 +102,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
         </div>
 
         {/* Title */}
-        <h3 className="font-serif text-2xl text-forest font-normal tracking-tight mb-2">
+        <h3 className="font-serif text-2xl text-forest dark:text-ivory group-hover:text-forest-hover dark:group-hover:text-emerald-400 transition-colors font-normal tracking-tight mb-2">
           {project.title}
         </h3>
 
         {/* Narrative Description */}
-        <p className="text-charcoal-muted text-sm leading-relaxed mb-6">
+        <p className="text-charcoal-muted dark:text-[#A8B2AC] text-sm leading-relaxed mb-6">
           {project.description || project.shortDescription}
         </p>
 
         {/* Tech Stack Badges */}
-        <div className="mt-auto pt-4 border-t border-border/60">
-          <div className="text-xs font-mono uppercase tracking-wider text-charcoal-muted mb-2 font-medium">
+        <div className="mt-auto pt-4 border-t border-border/60 dark:border-white/10">
+          <div className="text-xs font-mono uppercase tracking-wider text-charcoal-muted dark:text-neutral-400 mb-2 font-medium">
             Tech Stack
           </div>
           <div className="flex flex-wrap gap-1.5 mb-6">
@@ -135,7 +132,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
                 target="_blank"
                 variant="primary"
                 size="sm"
-                rightIcon={<ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />}
+                rightIcon={<ExternalLink className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />}
               >
                 Live Demo
               </Button>
@@ -147,7 +144,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
                 target="_blank"
                 variant="secondary"
                 size="sm"
-                leftIcon={<Github className="w-3.5 h-3.5" aria-hidden="true" />}
+                leftIcon={<Github className="w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />}
               >
                 Source Code
               </Button>

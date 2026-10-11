@@ -329,6 +329,135 @@ Employment history, experience years, achievements, metrics, testimonials, URLs,
   - `npm run lint`: PASSED (Exit code 0, 0 errors).
   - `npm run build`: PASSED (Exit code 0, 1611 modules transformed in 8.67s).
 
+## Phase 11 Motion System & Animation Enhancement (Completed)
+- **Zero-Dependency Motion Architecture:**
+  - Designed pure CSS3 + React IntersectionObserver architecture without heavy third-party animation libraries or bundle overhead.
+  - Implemented `useScrollReveal` custom hook (`frontend/src/hooks/useScrollReveal.ts`) and reusable `ScrollReveal` component (`frontend/src/components/ui/ScrollReveal.tsx`) supporting `fade-up`, `fade`, and `scale` entrance variants.
+  - One-time intersection trigger: Disconnects observers immediately upon entrance to eliminate unwanted animation replays on scroll jitter.
+  - SSR & Graceful Degradation: If JavaScript or IntersectionObserver is disabled/unavailable, all content remains visible and accessible.
+- **Hero Entrance Sequence:**
+  - Coordinated sequence: Status indicator badge (`animate-hero-fade`, 60ms delay) &rarr; Editorial headline (`animate-hero-slide`, 150ms delay) &rarr; Narrative description (`animate-hero-slide`, 260ms delay) &rarr; CTA buttons (`animate-hero-slide`, 360ms–500ms stagger) &rarr; 4 Core Discipline showcase (`animate-hero-slide`, 240ms delay).
+  - Added gentle floating scroll indicator pill (`animate-float-gentle`) at the bottom of the Hero encouraging visitors to explore downward.
+- **Navigation & Header Effects:**
+  - Added sticky header scroll listener: dynamically transitions between transparent ivory and elevated `backdrop-blur-md` with `shadow-subtle` and crisp border.
+  - Created `useActiveSection` custom hook (`frontend/src/hooks/useActiveSection.ts`) tracking active viewport section anchors (`#skills`, `#experience`, `#projects`, `#contact`).
+  - Implemented animated sliding underline (`.nav-link-underline`) on desktop navigation links, highlighting the active section and responding to hover with cubic-bezier easing.
+  - Mobile Drawer: Added two-stage transition state ensuring both open AND close transitions animate smoothly (`translate-x-full` to `translate-x-0` and backdrop opacity fade) while strictly maintaining focus trapping, Escape key handling, and focus restoration.
+- **Scroll-Triggered Section Reveals & Card Micro-Interactions:**
+  - Progressive staggered reveals applied across Section Headings, Skills category cards (`delay={index * 120}`), Experience timeline cards (`delay={index * 120}`), Project catalog cards (`delay={index * 100}`), and Contact channel cards (`delay={index * 100}`).
+  - Card hover effects: Refined subtle upward lift (`hover:-translate-y-1` to `hover:-translate-y-1.5`) and elevation shadow (`hover:shadow-card` / `hover:shadow-elevated`).
+  - Project Cards: Subtle 5% image scale (`group-hover:scale-105`) strictly within overflow-hidden container, subtle gradient overlay on hover, and directional icon movements on action buttons.
+  - Experience Section: Timeline markers with subtle hover scaling, and taste-restrained "Current Role" pulse indicator for Zigly Pet Care based on authentic "Present" duration data.
+  - Contact Section: Seamless Copy Email micro-interaction with checkmark feedback icon, screen-reader live announcements, and subtle channel card hover scaling.
+  - Button Primitives: Micro-interactions with `hover:-translate-y-0.5`, `active:scale-[0.98]`, and directional icon nudging (`group-hover/btn:translate-x-0.5`).
+- **Accessibility & Reduced Motion:**
+  - Complete compliance with `@media (prefers-reduced-motion: reduce)` in `frontend/src/index.css`: all animations, transforms, and transitions instantly disabled and zeroed out.
+  - Hook-level media query check: `useScrollReveal` immediately sets `isVisible = true` if reduced motion is requested.
+  - Keyboard focus rings strictly preserved (`:focus-visible`).
+- **Quality Checks & Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, clean TypeScript check).
+  - `npm run build`: PASSED (Exit code 0, 1614 modules transformed in 9.01s, production bundle built cleanly).
 
+## Phase 12 Dark Mode System & Fixed Floating Pill Navbar (Completed)
+- **Dark Mode Architecture:**
+  - Configured class-based dark mode (`darkMode: 'class'`) in [tailwind.config.js](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/tailwind.config.js).
+  - Created [ThemeContext](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/context/ThemeContext.tsx), [theme-context.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/context/theme-context.ts), and [useTheme](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/hooks/useTheme.ts) custom hook.
+  - Automatically checks `localStorage` key `'portfolio-theme-preference'` and falls back to system `(prefers-color-scheme: dark)`.
+  - Added inline `<head>` script in [index.html](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/index.html) to prevent theme flashing on initial page load.
+  - Defined CSS variables and base dark rules in [index.css](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/index.css) (`.dark body` `#0F1412`, `.dark h1-h6` `#FAF7F2`, high-contrast emerald/mint focus rings).
+- **Fixed Floating Pill Navbar:**
+  - Redesigned [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx) to match the reference visual design:
+    - Fixed position on scrolling (`fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center`).
+    - Frosted glass backdrop blur (`backdrop-blur-md bg-surface/80 dark:bg-[#161D1A]/85 border border-border/60 dark:border-white/10 shadow-lg rounded-2xl sm:rounded-full`).
+    - Left brand mark: Orange rounded badge with white terminal prompt `>_` glyph matching the screenshot.
+    - Center links: `Home`, `About`, `Work`, `Projects`, `Resume` in clean monospace font with active section highlight via `useActiveSection`.
+    - Right toggle: Rounded square outline toggle button with outline `Moon` icon in light mode and `Sun` icon in dark mode.
+    - Mobile responsiveness: Compact mobile drawer with full keyboard focus trap, smooth transitions, and dark mode support.
+- **Full Dark Mode Styling Across All Components:**
+  - Layout, Hero, About, Skills, Experience, Projects, ProjectCard, AnalyticsProjectCard, Contact, Footer, Button, CardShell, Badge, and SectionHeading all updated with curated dark theme tokens.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1619 modules transformed in 10.51s).
+
+## Phase 13 About & Navigation Alignment (Completed)
+- **Home Content Relocation to About:**
+  - Transferred complete hero overview into [About.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/About.tsx) with `id="about"`, containing the editorial headline, role badge ("Full-Stack Developer & Analyst"), status ("Open to opportunities"), introductory bio, call-to-action buttons ("Explore Projects", "Career Journey", "Technical Skills"), the 4-discipline composition card showcase (`~/arsh.dev/disciplines`), and scroll prompt indicator.
+- **Legacy About Content Removal:**
+  - Removed old narrative quotes, story paragraphs, guiding principles card, and profile-at-a-glance card from `About.tsx`.
+- **Navigation Simplification:**
+  - Removed `Home` from `navItems` in [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts). Navigation items are now: `About` (`#about`), `Work` (`#experience`), `Projects` (`#projects`), and `Resume` (`#contact`).
+  - Desktop floating navbar ([Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx)), mobile navigation drawer ([MobileNav.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/MobileNav.tsx)), and footer ([Footer.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Footer.tsx)) all start with `About`.
+- **Active Section Tracking Alignment:**
+  - Updated [useActiveSection.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/hooks/useActiveSection.ts) and [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx) to monitor `['about', 'skills', 'experience', 'projects', 'contact']`.
+  - When viewport is at top (`scrollY < 180`), `#about` is automatically highlighted as active in the navbar.
+  - Brand terminal logo in [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx) navigates to `#about`.
+- **App Layout Organization:**
+  - In [App.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/App.tsx), rendered `<About />` directly as the top section of the page, eliminating duplicate home sections.
+  - Kept [Hero.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Hero.tsx) as a clean re-export of `About`.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1617 modules transformed in 10.12s).
+
+## Phase 14 Contact Navigation & Downloadable Resume (Completed)
+- **Separated Contact and Resume in Navigation:**
+  - Added dedicated `{ label: 'Contact', href: '#contact' }` nav item in [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts) so clicking "Contact" scrolls directly to `#contact` where emails and contact methods live.
+  - Configured `{ label: 'Resume', href: './resume.pdf', isDownload: true, downloadFileName: 'Arshdeep_Singh_Resume.pdf' }` as an explicit downloadable document link.
+- **Empty Resume Placeholder:**
+  - Created a valid minimal empty PDF file at [resume.pdf](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/public/resume.pdf) in `frontend/public/`, keeping the resume ready for immediate download and simple replacement whenever the user uploads their final resume file.
+- **Download Support in UI Primitives & Nav Components:**
+  - Extended [Button.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/ui/Button.tsx) with optional `download?: string | boolean` attribute for link rendering.
+  - Updated [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx), [MobileNav.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/MobileNav.tsx), [Footer.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Footer.tsx), and [Contact.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Contact.tsx) to pass download attributes and render contextual download icons.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1617 modules transformed in 9.32s).
+
+## Phase 15 Brand Logo Replacement (Completed)
+- **New AS Monogram Logo Integration:**
+  - Sourced the authentic AS monogram logo into [as-logo.png](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/public/as-logo.png) in `frontend/public/`.
+  - Configured `brandConfig.logoUrl` to `'./as-logo.png'` in [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts).
+- **Header, Mobile Navigation & Footer Updates:**
+  - Replaced the orange terminal prompt `>_` glyph with the new AS monogram logo wrapped in a clean, elevated container matching dark/light mode styles:
+    - [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx): Stylized AS monogram mark with smooth hover scale effect.
+    - [MobileNav.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/MobileNav.tsx): Rendered in mobile menu brand header alongside wordmark.
+    - [Footer.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Footer.tsx): Rendered in footer brand cluster.
+- **Browser Favicon Synchronization:**
+  - Updated [index.html](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/index.html) favicon and apple-touch-icon links to `./as-logo.png`.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1617 modules transformed in 9.09s).
+
+## Phase 16 Skills Taxonomy & Categories Refinement (Completed)
+- **Updated Skills Data ([skills.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/skills.json)):**
+  - Updated the Skills section data to exclusively contain the 6 requested categories and their exact item lists and descriptions:
+    1. **Frontend Engineering:** "Building responsive, accessible, and high-performance user interfaces." (HTML5, CSS3 and Tailwind CSS, JavaScript, React.js, TypeScript).
+    2. **Backend Engineering:** "Developing scalable backend services, APIs, and application logic." (Python (FastAPI), Node.js, Express.js, REST API Architecture (API Integrations)).
+    3. **Data Analytics & Modeling:** "Transforming complex data into meaningful insights through processing and analysis." (SQL, MongoDB, Pandas, OpenPyXL, Data Modeling, Data Reconciliation, Exploratory Data Analysis).
+    4. **Machine Learning & AI:** "Applying machine learning techniques to build intelligent, data-driven solutions." (Machine Learning, TensorFlow, Predictive Modeling, Data Preprocessing, Model Evaluation, Feature Engineering).
+    5. **Systems & Automation:** "Automating repetitive workflows and connecting business systems efficiently." (Python Automation, Workflow Automation, Data Pipelines, Excel Automation, Microsoft Excel, Power BI).
+    6. **Engineering Practices & Tools:** "Building maintainable software through effective development practices and problem-solving." (Git, GitHub, Debugging, Problem Solving, Analytical Thinking, Database Management).
+  - All other previous/legacy skills were replaced, strictly confining the section to these 6 categories.
+- **Visual Grid Alignment ([Skills.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Skills.tsx)):**
+  - Updated the section description to reflect the 6 categories: "A structured overview of core competencies across frontend, backend, data analytics, machine learning, systems automation, and engineering practices."
+  - With exactly 6 categories, the cards render in a symmetrical 3x2 grid on desktop and clean single-column cards on mobile.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1617 modules transformed in 10.53s).
+
+## Phase 17 Disciplines Showcase Removal from About Section (Completed)
+- **Removed Disciplines Terminal Window:**
+  - Completely removed the `~/arsh.dev/disciplines` mock window container and its 4 inner discipline cards (Web Engineering, Data Analytics, Backend Engineering, Systems & Automation) from [About.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/About.tsx).
+- **Streamlined Layout & Cleaned Dependencies:**
+  - Removed unused imports and icons (`BarChart3`, `Code2`, `Terminal`, `Server`, `Workflow`, `rawDisciplinesData`, `DisciplinesData`, `DisciplineIcon`, `CardShell`).
+  - Adjusted the About layout to let the headline, introductory narrative, and call-to-action buttons occupy a clean, spacious single column (`max-w-3xl lg:max-w-4xl`).
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1616 modules transformed in 8.82s).
 
 

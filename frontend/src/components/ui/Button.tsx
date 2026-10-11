@@ -13,6 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   href?: string;
   target?: string;
   rel?: string;
+  download?: string | boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
@@ -28,6 +29,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       href,
       target,
       rel,
+      download,
       className = '',
       type = 'button',
       ...rest
@@ -36,18 +38,18 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   ) => {
     const isDisabled = disabled || isLoading;
 
-    // Base styling following DESIGN_SYSTEM.md
+    // Base styling following DESIGN_SYSTEM.md with refined micro-interactions
     const baseStyles =
-      'inline-flex items-center justify-center font-medium transition-colors duration-150 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 select-none';
+      'inline-flex items-center justify-center font-medium transition-all duration-200 ease-out rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0F1412] select-none group/btn hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]';
 
     // Variant styling
     const variantStyles: Record<ButtonVariant, string> = {
       primary:
-        'bg-forest text-ivory hover:bg-forest-hover active:bg-forest-light border border-transparent shadow-subtle',
+        'bg-forest dark:bg-emerald-600 text-ivory hover:bg-forest-hover dark:hover:bg-emerald-500 hover:shadow-card active:bg-forest-light border border-transparent shadow-subtle',
       secondary:
-        'bg-surface text-charcoal border border-border hover:border-charcoal/40 hover:bg-ivory active:bg-surface-muted',
+        'bg-surface dark:bg-[#1C2420] text-charcoal dark:text-ivory border border-border dark:border-white/15 hover:border-charcoal/40 dark:hover:border-white/30 hover:bg-ivory dark:hover:bg-[#232D28] hover:shadow-subtle active:bg-surface-muted',
       ghost:
-        'bg-transparent text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 border border-transparent',
+        'bg-transparent text-charcoal dark:text-ivory hover:bg-charcoal/5 dark:hover:bg-white/10 active:bg-charcoal/10 border border-transparent',
       danger:
         'bg-status-error text-ivory hover:opacity-90 active:opacity-80 border border-transparent',
     };
@@ -60,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     };
 
     const disabledStyles = isDisabled
-      ? 'opacity-50 cursor-not-allowed pointer-events-none'
+      ? 'opacity-50 cursor-not-allowed pointer-events-none hover:translate-y-0 hover:shadow-none active:scale-100'
       : 'cursor-pointer';
 
     const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`.trim();
@@ -70,14 +72,23 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         <a
           ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
+          download={download}
           target={target}
           rel={target === '_blank' ? 'noopener noreferrer ' + (rel || '') : rel}
           className={combinedClasses}
         >
           {isLoading && <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />}
-          {!isLoading && leftIcon}
+          {!isLoading && leftIcon && (
+            <span className="inline-flex items-center transition-transform duration-200 group-hover/btn:-translate-x-0.5">
+              {leftIcon}
+            </span>
+          )}
           <span>{children}</span>
-          {!isLoading && rightIcon}
+          {!isLoading && rightIcon && (
+            <span className="inline-flex items-center transition-transform duration-200 group-hover/btn:translate-x-0.5">
+              {rightIcon}
+            </span>
+          )}
         </a>
       );
     }
@@ -92,9 +103,17 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {...rest}
       >
         {isLoading && <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />}
-        {!isLoading && leftIcon}
+        {!isLoading && leftIcon && (
+          <span className="inline-flex items-center transition-transform duration-200 group-hover/btn:-translate-x-0.5">
+            {leftIcon}
+          </span>
+        )}
         <span>{children}</span>
-        {!isLoading && rightIcon}
+        {!isLoading && rightIcon && (
+          <span className="inline-flex items-center transition-transform duration-200 group-hover/btn:translate-x-0.5">
+            {rightIcon}
+          </span>
+        )}
       </button>
     );
   }

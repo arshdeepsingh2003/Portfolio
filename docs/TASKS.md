@@ -29,6 +29,7 @@ Work on one phase at a time and wait for approval before moving on.
 - [x] Implement Hero section with editorial typography, role introduction, and call-to-actions.
 - [x] Implement About section highlighting background, journey, and focus areas.
 - [x] Ensure mobile and desktop responsive layout and accessible headings.
+- [x] Designer Mockup Alignment: Updated About/Hero to panoramic widescreen workspace layout with clean sunlit studio backdrop, terracotta accent line & period, primary `View My Work` and `Download Resume` actions, and inline capability metrics (`Web Development`, `Data Analytics`, `Problem Solving`).
 
 ## Phase 3 — Skills and Web Development Projects
 - [x] Define local data schemas and data files for skills and web projects in `frontend/src/data/`.
@@ -79,7 +80,7 @@ Work on one phase at a time and wait for approval before moving on.
 - [x] Background & Journey Consolidation: Removed legacy "Background & Journey" about content, integrated Professional Experience in its position, and updated section heading to "Career Journey" with eyebrow "Professional Experience".
 - [x] Skills Refinement: Removed "Web Accessibility (A11y)" from Architecture & Practices, removed the "Verified Technologies & Tools" subheader label from all cards, and removed checkmark tick icons from skill badges.
 - [x] Global Skill Consistency & Color Unification: Standardized all skill tags and badges to a single neutral grey color across Skills, Hero, Projects, and Experience. Simplified HTML entry to "HTML5", renamed "JavaScript (ESNext)" to "JavaScript", verified absence of "Semantic Search", and integrated "Machine Learning" across skills, disciplines, projects, and about summaries.
-- [ ] Await user review and confirmation of unverified experience fields (DRDO duration/location/technologies, Encryptix duration/location, and Zigly dates).
+- [x] Confirmed experience details: Added DRDO Research Intern duration (July 2025 – August 2025) & location (New Delhi, India), and removed Encryptix entry per user instruction.
 
 ## Phase 9 — Layout & Skills Reorganization
 - [x] Engineering Overview Removal: Removed the 4-category engineering overview strip (`01. FRONTEND`, `02. BACKEND`, `03. DATA ANALYTICS`, `04. ARCHITECTURE`) from the Hero section left column.
@@ -96,9 +97,60 @@ Work on one phase at a time and wait for approval before moving on.
 - [x] Enhanced `ProjectCard.tsx` to render project type badges ("Major Project", "Self Project"), completion years, lifecycle status, tech stack badges, and bespoke editorial fallback icons (AI/RAG, Analytics/BI, Web).
 - [x] Updated main page layout in `frontend/src/App.tsx` removing `DataAnalytics` and establishing a balanced alternating section background rhythm: Hero (Ivory) -> Skills (Warm Ivory) -> Experience (Surface/30) -> Projects (Warm Ivory) -> Contact (Surface/30).
 - [x] Verified clean compilation: `npm run typecheck` (0 errors), `npm run lint` (0 errors), and `npm run build` (1611 modules transformed in 8.67s).
-- [x] Sorted project catalog sequence in `frontend/src/data/projects.json` by years (reverse chronological 2026 -> 2025 -> 2024): BuildLoop (2026) -> Personal Knowledge Base Copilot (2026) -> AI Fake Job Posting Detector (2026) -> E-Commerce Platform (2025) -> Mobile Sales Analytics Dashboard (2025) -> Real Estate Marketplace (2024).
+- [x] Removed year mentions across project data and cards; reordered project catalog into requested sequence: E-Commerce Platform (`ecommerce-platform`) -> Real Estate Marketplace (`real-estate-marketplace`) -> Mobile Sales Analytics Dashboard (`mobile-sales-analytics-dashboard`) -> AI Fake Job Posting Detector (`ai-fake-job-posting-detector`) -> BuildLoop (`buildloop`) -> Personal Knowledge Base Copilot (`personal-knowledge-base-copilot`).
 
+## Phase 11 — Motion System & Animation Enhancement
+- [x] Technical Foundation: Configured Tailwind animation keyframes and timing curves, reusable `ScrollReveal` component, and `useScrollReveal` hook with strict `prefers-reduced-motion` detection and zero external dependencies.
+- [x] Hero Section Entrance: Staggered sequence for introductory label, editorial headline, supporting description, action buttons, discipline composition cards, and gentle floating scroll indicator.
+- [x] Navigation & Header: Sticky transition with shadow/backdrop blur, animated sliding underlines on hover and active section indicator, smooth anchor scrolling, and animated mobile drawer entrance/exit with focus trap preservation.
+- [x] Section Reveals: Scroll-triggered progressive reveals for section headers, skill cards, experience timeline entries, and unified project cards with one-time intersection triggers.
+- [x] Card & Button Micro-Interactions: Refined elevation on hover, subtle image/icon zoom within bounds, directional external link arrows, tag hover feedback, and smooth email copy feedback.
+- [x] Accessibility & Verification: Full adherence to `prefers-reduced-motion`, responsive layouts (320px–1440px), keyboard focus rings, zero layout shift, passing `npm run lint` (0 errors), `npm run typecheck` (0 errors), and `npm run build` (1614 modules transformed in 9.01s).
 
+## Phase 12 — Dark Mode & Floating Fixed Navbar
+- [x] Class-based Dark Mode Engine: Created `ThemeContext`, `theme-context.ts`, and `useTheme` hook with system preference detection, localStorage persistence, and inline `<head>` script in `index.html` preventing theme flash.
+- [x] Tailwind & CSS Dark Mode Foundation: Added `darkMode: 'class'` to `tailwind.config.js`, defined CSS variables for dark forest, dark surface, dark text, and heading colors in `index.css`.
+- [x] Fixed Floating Pill Navbar: Replaced full-width header with a fixed floating pill centered near the top of the viewport (`fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center`), styled with frosted glass backdrop blur, rounded-full/rounded-2xl border, that remains fixed on scrolling.
+- [x] Orange Terminal Brand Mark: Integrated orange rounded badge with white terminal prompt `>_` matching user screenshot on left of navbar.
+- [x] Navigation Links: Configured `Home`, `About`, `Work`, `Projects`, `Resume` in monospace/clean font with active state tracking via `useActiveSection`.
+- [x] Theme Toggle Button: Added rounded square outline toggle button with outline `Moon` icon (in light mode) and `Sun` icon (in dark mode) on right of navbar.
+- [x] Full Dark Mode Theme Across All Components: Implemented dark mode classes across Layout, Hero, About, Skills, Experience, Projects, ProjectCard, AnalyticsProjectCard, Contact, Footer, Button, CardShell, Badge, and SectionHeading.
+## Phase 13 — About & Navigation Alignment
+- [x] Home Content Relocation: Moved complete home hero content (editorial headline, intro bio, action buttons, core disciplines showcase, and floating scroll indicator) into `About.tsx` with `id="about"`.
+- [x] Legacy About Removal: Completely removed legacy About content (narrative lead quote, paragraphs, guiding principles card, profile at a glance card).
+- [x] Navigation Bar Alignment: Removed `Home` from `navItems` in `src/config/brand.ts`; desktop navbar, mobile drawer, and footer now start with `About` (`#about`), followed by `Work`, `Projects`, `Resume`.
+- [x] Active Section & Header Sync: Updated `useActiveSection` and `Header.tsx` to monitor `['about', 'skills', 'experience', 'projects', 'contact']`, with `#about` active at page top and brand terminal logo linking to `#about`.
+- [x] Clean Validation: Passed `npm run typecheck`, `npm run lint`, and `npm run build` (1617 modules transformed, 0 errors, 0 warnings).
 
+## Phase 14 — Contact Navigation & Resume Download Configuration
+- [x] Add Contact Link to Navbar: Added `{ label: 'Contact', href: '#contact' }` to `navItems` in `src/config/brand.ts`, enabling direct navigation to the Contact section where contact information is hosted.
+- [x] Dedicated Downloadable Resume Nav Item: Configured `{ label: 'Resume', href: './resume.pdf', isDownload: true, downloadFileName: 'Arshdeep_Singh_Resume.pdf' }` in `navItems`.
+- [x] Minimal Blank Resume Placeholder: Created valid empty PDF file at `frontend/public/resume.pdf` ready for user replacement whenever their finalized résumé is ready.
+- [x] Download Support on UI Primitives & Navigation: Enhanced `Button` component, `Header.tsx`, `MobileNav.tsx`, `Footer.tsx`, and `Contact.tsx` to handle `download` attributes and display appropriate download iconography.
+- [x] Clean Verification: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and `npm run build` (1617 modules transformed in 9.32s).
+
+## Phase 15 — Brand Logo Replacement
+- [x] Integrate New AS Monogram Logo Asset: Sourced user's provided AS code logo into `frontend/public/as-logo.png` and `frontend/public/images/as-logo.png`.
+- [x] Update Brand Configuration: Updated `logoUrl` in `src/config/brand.ts` to `./as-logo.png`.
+- [x] Replace Orange Terminal Glyph: Replaced previous orange square terminal glyph across `Header.tsx`, `MobileNav.tsx`, and `Footer.tsx` with high-resolution AS monogram icon.
+- [x] Favicon & Head Tags Update: Updated `index.html` favicon and apple-touch-icon links to `./as-logo.png`.
+- [x] Clean Validation: Verified 0 errors with `npm run typecheck`, 0 warnings with `npm run lint`, and passing production build with `npm run build` (1617 modules transformed in 9.09s).
+
+## Phase 16 — Skills Taxonomy & Categories Refinement
+- [x] Sourced 6 Exact Categories: Updated `frontend/src/data/skills.json` to keep exclusively the 6 requested categories and their exact skill sets:
+  1. Frontend Engineering (HTML5, CSS3 and Tailwind CSS, JavaScript, React.js, TypeScript)
+  2. Backend Engineering (Python (FastAPI), Node.js, Express.js, REST API Architecture (API Integrations))
+  3. Data Analytics & Modeling (SQL, MongoDB, Pandas, OpenPyXL, Data Modeling, Data Reconciliation, Exploratory Data Analysis)
+  4. Machine Learning & AI (Machine Learning, TensorFlow, Predictive Modeling, Data Preprocessing, Model Evaluation, Feature Engineering)
+  5. Systems & Automation (Python Automation, Workflow Automation, Data Pipelines, Excel Automation, Microsoft Excel, Power BI)
+  6. Engineering Practices & Tools (Git, GitHub, Debugging, Problem Solving, Analytical Thinking, Database Management)
+- [x] Replaced Previous Data: Removed all legacy/other categories and isolated skills, strictly confining the Skills section to these 6 categories.
+- [x] Section Copy & Grid Presentation: Refined section description in `frontend/src/components/sections/Skills.tsx` and ensured a balanced 2-column grid layout (3 rows of 2 cards).
+- [x] Clean Verification: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and production build with `npm run build` (1617 modules transformed in 10.53s).
+
+## Phase 17 — Disciplines Showcase Removal from About Section
+- [x] Removed Disciplines Showcase Window: Deleted the `~/arsh.dev/disciplines` mock terminal window shell and the 4 discipline cards (Web Engineering, Data Analytics, Backend Engineering, Systems & Automation) from `frontend/src/components/sections/About.tsx`.
+- [x] Streamlined Layout: Cleaned up unused imports and icons (`BarChart3`, `Code2`, `Terminal`, `Server`, `Workflow`, `rawDisciplinesData`, `DisciplinesData`, `CardShell`), allowing the About introduction content and action CTAs to breathe in a balanced, spacious container.
+- [x] Clean Validation: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and production build with `npm run build` (1616 modules transformed in 8.82s).
 
 

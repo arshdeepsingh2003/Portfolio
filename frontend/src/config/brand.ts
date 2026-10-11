@@ -9,6 +9,9 @@
 export interface NavItem {
   readonly label: string;
   readonly href: string;
+  readonly isDownload?: boolean;
+  readonly downloadFileName?: string;
+  readonly target?: string;
 }
 
 export interface ContactLinks {
@@ -18,7 +21,7 @@ export interface ContactLinks {
   readonly githubUrl: string | null;
   /** Pending verification: Do not invent LinkedIn URL */
   readonly linkedinUrl: string | null;
-  /** Pending verification: Do not invent Resume URL */
+  /** Verified local download file */
   readonly resumeUrl: string | null;
 }
 
@@ -38,13 +41,14 @@ export const brandConfig: BrandConfig = {
   title: 'ARSH.DEV — Developer & Data Portfolio',
   description: 'Full-stack developer portfolio showcasing web development, data analytics projects, and technical skills.',
   ownerDisplayName: 'Arshdeep Singh',
-  logoUrl: './images/logo.png',
+  logoUrl: './as-logo.png',
 
   navItems: [
-    { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'About', href: '#about' },
+    { label: 'Work', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Resume', href: './resume.pdf', isDownload: true, downloadFileName: 'Arshdeep_Singh_Resume.pdf' },
   ],
 
   // Contact details strictly kept as null/pending until verified by owner
@@ -52,7 +56,7 @@ export const brandConfig: BrandConfig = {
     email: null,
     githubUrl: null,
     linkedinUrl: null,
-    resumeUrl: null,
+    resumeUrl: './resume.pdf',
   },
 } as const;
 

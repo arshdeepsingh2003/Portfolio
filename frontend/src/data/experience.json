@@ -45,8 +45,8 @@
     "id": "drdo",
     "company": "Defence Research and Development Organisation (DRDO)",
     "role": "Research Intern",
-    "location": null,
-    "duration": null,
+    "location": "New Delhi, India",
+    "duration": "July 2025 – August 2025",
     "overview": "Contributed to technical research and authored a technical review paper. Presented research findings to senior professionals, strengthening my ability to analyze technical literature, evaluate information, and communicate complex concepts clearly.",
     "focusAreas": [
       "Technical Research",
@@ -55,24 +55,5 @@
       "Research Presentation"
     ],
     "technologies": null
-  },
-  {
-    "id": "encryptix",
-    "company": "Encryptix",
-    "role": "Web Developer Intern",
-    "location": null,
-    "duration": null,
-    "overview": "Worked on building responsive user interface components using HTML5, CSS, and JavaScript. Focused on implementing structured layouts, improving visual consistency, and developing foundational frontend development skills.",
-    "focusAreas": [
-      "Frontend Development",
-      "Responsive Web Design",
-      "UI Implementation",
-      "Web Fundamentals"
-    ],
-    "technologies": [
-      "HTML5",
-      "CSS",
-      "JavaScript"
-    ]
   }
 ]

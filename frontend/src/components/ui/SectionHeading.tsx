@@ -26,15 +26,15 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   return (
     <div className={`flex flex-col mb-8 sm:mb-12 ${alignmentStyles} ${className}`}>
       {eyebrow && (
-        <span className="font-mono text-xs uppercase tracking-widest text-plum font-semibold mb-2.5 inline-block">
+        <span className="font-mono text-xs uppercase tracking-widest text-plum dark:text-emerald-400 font-semibold mb-2.5 inline-block">
           {eyebrow}
         </span>
       )}
-      <HeadingTag id={id} className="font-serif text-3xl sm:text-4xl text-forest tracking-tight leading-tight">
+      <HeadingTag id={id} className="font-serif text-3xl sm:text-4xl text-forest dark:text-ivory tracking-tight leading-tight">
         {title}
       </HeadingTag>
       {description && (
-        <div className={`mt-3 text-charcoal-muted text-base sm:text-lg leading-relaxed max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}>
+        <div className={`mt-3 text-charcoal-muted dark:text-[#A8B2AC] text-base sm:text-lg leading-relaxed max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}>
           {typeof description === 'string' ? <p>{description}</p> : description}
         </div>
       )}

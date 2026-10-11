@@ -4,6 +4,7 @@ import { Project } from '../../types/project';
 import { ProjectCard } from './ProjectCard';
 import { AnalyticsProjectCard } from './AnalyticsProjectCard';
 import { CardShell } from '../ui/CardShell';
+import { ScrollReveal } from '../ui/ScrollReveal';
 import { normalizeProject, filterProjectsByCategory } from '../../utils/projectHelpers';
 
 export interface ProjectListProps {
@@ -58,13 +59,20 @@ export const ProjectList: React.FC<ProjectListProps> = ({
 
   return (
     <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch ${className}`}>
-      {displayedProjects.map((project) =>
-        isAnalytics ? (
-          <AnalyticsProjectCard key={project.id || project.slug} project={project} />
-        ) : (
-          <ProjectCard key={project.id || project.slug} project={project} />
-        )
-      )}
+      {displayedProjects.map((project, index) => (
+        <ScrollReveal
+          key={project.id || project.slug}
+          animation="fade-up"
+          delay={index * 100}
+          className="h-full"
+        >
+          {isAnalytics ? (
+            <AnalyticsProjectCard project={project} />
+          ) : (
+            <ProjectCard project={project} />
+          )}
+        </ScrollReveal>
+      ))}
     </div>
   );
 };
