@@ -1,0 +1,58 @@
+[
+  {
+    "id": "estate-app",
+    "title": "EstateApp",
+    "slug": "estate-app",
+    "category": "web-development",
+    "shortDescription": "Real estate property discovery and listing application candidate.",
+    "description": "A web development application focused on property browsing, structured filtering, and responsive user experience. Technical specifications, live deployment URL, and source repository are pending owner review.",
+    "technologies": ["React", "TypeScript", "Tailwind CSS"],
+    "image": null,
+    "githubUrl": null,
+    "liveUrl": null,
+    "featured": true,
+    "status": "pending-review"
+  },
+  {
+    "id": "screen-sync",
+    "title": "ScreenSync",
+    "slug": "screen-sync",
+    "category": "web-development",
+    "shortDescription": "Screen synchronization and presentation sharing utility candidate.",
+    "description": "A browser-based screen coordination utility engineered for lightweight media presentation. Architecture details, live deployment URL, and source code links are pending owner review.",
+    "technologies": ["TypeScript", "Web APIs"],
+    "image": null,
+    "githubUrl": null,
+    "liveUrl": null,
+    "featured": false,
+    "status": "pending-review"
+  },
+  {
+    "id": "inventory-reconciliation",
+    "title": "Inventory Reconciliation Tool",
+    "slug": "inventory-reconciliation",
+    "category": "data-analytics",
+    "shortDescription": "Analytical reconciliation pipeline for audit discrepancy resolution candidate.",
+    "description": "Candidate data analytics case study focusing on cross-system inventory discrepancies. Dataset details, methodology, and visualizations are pending owner review.",
+    "technologies": ["Python", "SQL", "Data Reconciliation"],
+    "image": null,
+    "githubUrl": null,
+    "liveUrl": null,
+    "featured": true,
+    "status": "pending-review"
+  },
+  {
+    "id": "warehouse-surveillance",
+    "title": "Warehouse Surveillance Dashboard",
+    "slug": "warehouse-surveillance",
+    "category": "data-analytics",
+    "shortDescription": "Operational surveillance and tracking analytics interface candidate.",
+    "description": "Candidate data analytics dashboard for warehouse operations monitoring. Operational metrics, views, and insights are pending owner review.",
+    "technologies": ["Python", "Data Modeling", "Dashboarding"],
+    "image": null,
+    "githubUrl": null,
+    "liveUrl": null,
+    "featured": false,
+    "status": "pending-review"
+  }
+]

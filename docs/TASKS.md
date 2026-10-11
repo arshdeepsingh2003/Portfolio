@@ -31,10 +31,10 @@ Work on one phase at a time and wait for approval before moving on.
 - [x] Ensure mobile and desktop responsive layout and accessible headings.
 
 ## Phase 3 — Skills and Web Development Projects
-- [ ] Define local data schemas and data files for skills and web projects in `frontend/src/data/`.
-- [ ] Implement categorized Skills display.
-- [ ] Implement Web Projects section with project cards, tech stack tags, live/source links, and screenshots.
-- [ ] Ensure empty/fallback states for missing links or images.
+- [x] Define local data schemas and data files for skills and web projects in `frontend/src/data/`.
+- [x] Implement categorized Skills display.
+- [x] Implement Web Projects section with project cards, tech stack tags, live/source links, and screenshots.
+- [x] Ensure empty/fallback states for missing links or images.
 
 ## Phase 4 — Data Analytics Projects
 - [ ] Define local data schema and data file for data analytics case studies.
