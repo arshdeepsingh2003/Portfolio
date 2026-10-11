@@ -2,24 +2,28 @@
   {
     "id": "frontend",
     "name": "Frontend Engineering",
+    "label": "Core Discipline",
     "description": "Building responsive, accessible, and high-performance component systems.",
     "skills": [
       { "name": "React", "highlight": true, "status": "supported" },
       { "name": "TypeScript", "highlight": true, "status": "supported" },
       { "name": "Tailwind CSS", "highlight": true, "status": "supported" },
       { "name": "Vite", "highlight": false, "status": "supported" },
-      { "name": "HTML5 / Semantic Structure", "highlight": false, "status": "supported" },
+      { "name": "HTML5", "highlight": false, "status": "supported" },
       { "name": "CSS3 / Modern Layouts", "highlight": false, "status": "supported" },
-      { "name": "JavaScript (ESNext)", "highlight": false, "status": "supported" }
+      { "name": "JavaScript", "highlight": false, "status": "supported" }
     ]
   },
   {
     "id": "data-analytics",
     "name": "Data Analytics & Modeling",
-    "description": "Structured data analysis, reconciliation, and exploratory insights.",
+    "label": "Core Discipline",
+    "description": "Transforming complex operational data into meaningful insights through data processing, reconciliation, and analytical problem-solving.",
     "skills": [
       { "name": "Python", "highlight": true, "status": "supported" },
+      { "name": "Machine Learning", "highlight": true, "status": "supported" },
       { "name": "SQL", "highlight": true, "status": "supported" },
+      { "name": "Pandas", "highlight": false, "status": "supported" },
       { "name": "Data Modeling", "highlight": false, "status": "supported" },
       { "name": "Data Reconciliation", "highlight": false, "status": "supported" },
       { "name": "Exploratory Data Analysis", "highlight": false, "status": "supported" }
@@ -27,25 +31,43 @@
   },
   {
     "id": "backend",
-    "name": "Backend & Systems",
-    "description": "Lightweight API design, type validation, and server-side utilities.",
+    "name": "Backend Engineering",
+    "label": "Core Discipline",
+    "description": "Developing reliable backend systems, REST APIs, and database integrations designed for maintainability, efficiency, and scalability.",
     "skills": [
       { "name": "FastAPI", "highlight": true, "status": "supported" },
+      { "name": "Python", "highlight": true, "status": "supported" },
+      { "name": "Node.js", "highlight": false, "status": "supported" },
+      { "name": "Express.js", "highlight": false, "status": "supported" },
       { "name": "REST API Architecture", "highlight": false, "status": "supported" },
-      { "name": "Pydantic Validation", "highlight": false, "status": "supported" },
-      { "name": "Node.js Runtimes", "highlight": false, "status": "supported" }
+      { "name": "Pydantic Validation", "highlight": false, "status": "supported" }
+    ]
+  },
+  {
+    "id": "systems-automation",
+    "name": "Systems & Automation",
+    "label": "Applied Engineering",
+    "description": "Automating repetitive workflows and connecting business systems through API integrations, data pipelines, and intelligent process design.",
+    "skills": [
+      { "name": "REST APIs", "highlight": true, "status": "supported" },
+      { "name": "Python Automation", "highlight": true, "status": "supported" },
+      { "name": "Data Pipelines", "highlight": true, "status": "supported" },
+      { "name": "API Integrations", "highlight": false, "status": "supported" },
+      { "name": "System Integration", "highlight": false, "status": "supported" },
+      { "name": "Workflow Automation", "highlight": false, "status": "supported" },
+      { "name": "Excel Automation", "highlight": false, "status": "supported" }
     ]
   },
   {
     "id": "architecture-tooling",
     "name": "Architecture & Practices",
-    "description": "Version control, accessible design standards, and zero-database integrity.",
+    "label": "Engineering Practices",
+    "description": "Version control, accessible design standards, and robust database architecture.",
     "skills": [
       { "name": "Git & GitHub", "highlight": true, "status": "supported" },
       { "name": "Design Systems", "highlight": false, "status": "supported" },
       { "name": "Responsive Design", "highlight": false, "status": "supported" },
-      { "name": "Web Accessibility (A11y)", "highlight": false, "status": "supported" },
-      { "name": "Strict Zero-DB Architecture", "highlight": true, "status": "supported" }
+      { "name": "Database Management & SQL", "highlight": true, "status": "supported" }
     ]
   }
 ]

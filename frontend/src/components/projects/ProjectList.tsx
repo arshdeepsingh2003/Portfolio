@@ -2,6 +2,7 @@ import React from 'react';
 import rawProjectsData from '../../data/projects.json';
 import { Project } from '../../types/project';
 import { ProjectCard } from './ProjectCard';
+import { AnalyticsProjectCard } from './AnalyticsProjectCard';
 import { CardShell } from '../ui/CardShell';
 import { normalizeProject, filterProjectsByCategory } from '../../utils/projectHelpers';
 
@@ -12,6 +13,8 @@ export interface ProjectListProps {
   readonly category?: string;
   /** Optional filter for featured items only */
   readonly featuredOnly?: boolean;
+  /** Presentation variant: 'web' renders engineering cards, 'analytics' renders case study cards */
+  readonly variant?: 'web' | 'analytics';
   /** Empty state message if no items match */
   readonly emptyMessage?: string;
   /** Container CSS classes */
@@ -22,6 +25,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
   projects,
   category,
   featuredOnly = false,
+  variant,
   emptyMessage = 'No projects currently available in this category.',
   className = '',
 }) => {
@@ -49,11 +53,18 @@ export const ProjectList: React.FC<ProjectListProps> = ({
     );
   }
 
+  // Determine card rendering style: explicit variant or inferred from category
+  const isAnalytics = variant === 'analytics' || (!variant && category === 'data-analytics');
+
   return (
-    <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 ${className}`}>
-      {displayedProjects.map((project) => (
-        <ProjectCard key={project.id || project.slug} project={project} />
-      ))}
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch ${className}`}>
+      {displayedProjects.map((project) =>
+        isAnalytics ? (
+          <AnalyticsProjectCard key={project.id || project.slug} project={project} />
+        ) : (
+          <ProjectCard key={project.id || project.slug} project={project} />
+        )
+      )}
     </div>
   );
 };

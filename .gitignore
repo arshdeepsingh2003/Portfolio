@@ -1,9 +1,13 @@
 # ==========================================
-# Dependencies
+# Dependencies & Package Managers
 # ==========================================
 node_modules/
 .pnp
 .pnp.js
+.npm/
+.yarn/cache
+.yarn/unplugged
+.pnpm-store/
 
 # ==========================================
 # Production & Build Outputs
@@ -12,8 +16,16 @@ dist/
 dist-ssr/
 build/
 out/
+coverage/
+.nyc_output/
 *.local
 *.tsbuildinfo
+
+# ==========================================
+# Hosting & Deployment Platforms
+# ==========================================
+.vercel
+.netlify
 
 # ==========================================
 # Caches & Tooling
@@ -22,6 +34,7 @@ out/
 .cache/
 .eslintcache
 .turbo/
+.parcel-cache/
 
 # ==========================================
 # Environment Variables & Secrets
@@ -31,6 +44,13 @@ out/
 .env.*.local
 *.env
 !.env.example
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+credentials.json
 
 # ==========================================
 # Logs
@@ -41,6 +61,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+pip-log.txt
 
 # ==========================================
 # Python & FastAPI Backend
@@ -65,6 +86,18 @@ venv.bak/
 htmlcov/
 .tox/
 .nox/
+pip-wheel-metadata/
+.pyre/
+.pytype/
+cython_debug/
+
+# ==========================================
+# Databases & Storage (Strict: No DB Repository)
+# ==========================================
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
 
 # ==========================================
 # Editor & IDE Settings
@@ -81,6 +114,9 @@ htmlcov/
 *.swo
 *.swp
 *.code-workspace
+*.sublime-project
+*.sublime-workspace
+.fleet/
 
 # ==========================================
 # Operating System Artifacts
@@ -96,9 +132,16 @@ ehthumbs.db
 ehthumbs_vista.db
 [Dd]esktop.ini
 *.stackdump
+$RECYCLE.BIN/
+*.lnk
 
 # ==========================================
-# Temporary & Diagnostic Files
+# Temporary, Backup & Diagnostic Files
 # ==========================================
 *.tmp
 *.temp
+*.bak
+*~
+*.orig
+*.rej
+*.patch

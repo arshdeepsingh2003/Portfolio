@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Compass, ShieldCheck, ArrowRight } from 'lucide-react';
+import { FileText, Compass, ArrowRight } from 'lucide-react';
 import { brandConfig } from '../../config/brand';
 import { aboutData } from '../../data/about';
 import { Container } from '../layout/Container';
@@ -48,6 +48,7 @@ export const About: React.FC = () => {
                 variant="primary"
                 size="md"
                 rightIcon={<ArrowRight className="w-4 h-4" aria-hidden="true" />}
+                className="w-full sm:w-auto"
               >
                 Direct Contact
               </Button>
@@ -59,13 +60,16 @@ export const About: React.FC = () => {
                   variant="secondary"
                   size="md"
                   leftIcon={<FileText className="w-4 h-4 text-forest" aria-hidden="true" />}
+                  className="w-full sm:w-auto"
                 >
                   View Résumé
                 </Button>
               ) : (
-                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-sm bg-surface border border-border text-xs text-charcoal-muted font-mono">
-                  <FileText className="w-3.5 h-3.5 text-plum" aria-hidden="true" />
-                  <span>Résumé Document:</span>
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-sm bg-surface border border-border text-xs text-charcoal-muted font-mono w-full sm:w-auto justify-between sm:justify-start">
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-3.5 h-3.5 text-plum" aria-hidden="true" />
+                    <span>Résumé:</span>
+                  </div>
                   <Badge variant="pending" size="sm">Pending Verification</Badge>
                 </div>
               )}
@@ -105,9 +109,16 @@ export const About: React.FC = () => {
 
             {/* Profile Overview Card */}
             <CardShell className="bg-surface shadow-card">
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border text-forest">
-                <ShieldCheck className="w-5 h-5 text-forest" aria-hidden="true" />
-                <h3 className="font-serif text-xl font-bold">Profile at a Glance</h3>
+              <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-border">
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={brandConfig.logoUrl}
+                    alt={`${brandConfig.ownerDisplayName} Logo`}
+                    className="w-8 h-8 rounded-md object-cover border border-border bg-charcoal"
+                  />
+                  <h3 className="font-serif text-xl font-bold text-forest">Profile at a Glance</h3>
+                </div>
+                <Badge variant="forest" size="sm">Verified</Badge>
               </div>
 
               <dl className="space-y-3 text-xs">

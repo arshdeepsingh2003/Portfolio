@@ -27,6 +27,23 @@ export type ProjectCategory = 'web-development' | 'data-analytics';
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'pending-review';
 
+/**
+ * Structured case-study facets for analytical projects (Feature 3).
+ * Fields are optional/nullable to strictly uphold data integrity rules.
+ */
+export interface AnalyticsCaseStudy {
+  /** Core problem statement or analytical question explored */
+  readonly coreQuestion?: string | null;
+  /** Dataset origin, size, parameters, or schema source */
+  readonly datasetSource?: string | null;
+  /** Methodology, pipeline, or analytical approach applied */
+  readonly methodology?: string | null;
+  /** Verified empirical findings, metrics, or insights (strictly no fabricated figures) */
+  readonly keyFindings?: string | null;
+  /** Operational boundaries, assumptions, or scope limitations */
+  readonly limitations?: string | null;
+}
+
 export interface Project {
   /** Required: Unique identifier */
   readonly id: string;
@@ -34,8 +51,12 @@ export interface Project {
   readonly title: string;
   /** Required: URL-friendly slug */
   readonly slug: string;
-  /** Required: Primary category ('web-development' | 'data-analytics' | string) */
-  readonly category: ProjectCategory | string;
+  /** Optional: Primary category ('web-development' | 'data-analytics' | string) */
+  readonly category?: ProjectCategory | string;
+  /** Optional: Project release or completion year */
+  readonly year?: string;
+  /** Optional: Project type designation (e.g. 'Major Project', 'Self Project') */
+  readonly projectType?: string;
   /** Required: Concise 1-2 sentence overview */
   readonly shortDescription: string;
   /** Required: Full narrative description */
@@ -52,4 +73,7 @@ export interface Project {
   readonly featured: boolean;
   /** Required: Project lifecycle status */
   readonly status: ProjectStatus;
+  /** Optional: Analytical case study facets */
+  readonly caseStudy?: AnalyticsCaseStudy | null;
 }
+

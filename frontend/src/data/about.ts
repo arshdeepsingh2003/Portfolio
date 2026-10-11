@@ -64,15 +64,15 @@ export const aboutData: AboutData = {
     },
     {
       label: 'Frontend Foundation',
-      value: 'React, TypeScript, Tailwind CSS, Vite',
+      value: 'React, TypeScript, JavaScript, HTML5, Tailwind CSS, Vite',
     },
     {
       label: 'Data & Scripting',
-      value: 'Python, SQL, Data Modeling & Reconciliation',
+      value: 'Python, SQL, Machine Learning, Data Modeling & Reconciliation',
     },
     {
       label: 'Architecture Principles',
-      value: 'Strict Zero-DB, Semantic HTML, Clean State',
+      value: 'Database Management & SQL, Semantic HTML5, Clean State',
     },
     {
       label: 'Current Status',

@@ -27,6 +27,7 @@ export interface BrandConfig {
   readonly title: string;
   readonly description: string;
   readonly ownerDisplayName: string;
+  readonly logoUrl: string;
   readonly navItems: readonly NavItem[];
   readonly contact: ContactLinks;
 }
@@ -37,12 +38,12 @@ export const brandConfig: BrandConfig = {
   title: 'ARSH.DEV — Developer & Data Portfolio',
   description: 'Full-stack developer portfolio showcasing web development, data analytics projects, and technical skills.',
   ownerDisplayName: 'Arshdeep Singh',
+  logoUrl: './images/logo.png',
 
   navItems: [
-    { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Web Projects', href: '#projects' },
-    { label: 'Data Analytics', href: '#data-analytics' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
   ],
 

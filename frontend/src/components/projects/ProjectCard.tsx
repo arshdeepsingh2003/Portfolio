@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code2, Sparkles, Clock } from 'lucide-react';
+import { ExternalLink, Github, Code2, Sparkles, Clock, BarChart3, Bot } from 'lucide-react';
 import { Project } from '../../types/project';
 import { CardShell } from '../ui/CardShell';
 import { Badge } from '../ui/Badge';
@@ -18,12 +18,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
   const hasGithubUrl = hasValidUrl(project.githubUrl);
   const showFallbackImage = !project.image || imageError;
 
-  const categoryLabel =
-    project.category === 'web-development'
-      ? 'Web Engineering'
-      : project.category === 'data-analytics'
-      ? 'Data Analytics'
-      : project.category;
+  const getFallbackIcon = () => {
+    const techs = project.technologies.map((t) => t.toLowerCase());
+    if (techs.some((t) => t.includes('power bi') || t.includes('dax') || t.includes('kpi'))) {
+      return <BarChart3 className="w-6 h-6" aria-hidden="true" />;
+    }
+    if (techs.some((t) => t.includes('rag') || t.includes('voyage') || t.includes('machine learning') || t.includes('llm') || t.includes('ai'))) {
+      return <Bot className="w-6 h-6" aria-hidden="true" />;
+    }
+    return <Code2 className="w-6 h-6" aria-hidden="true" />;
+  };
 
   return (
     <CardShell
@@ -36,7 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
         {showFallbackImage ? (
           <div className="w-full h-full p-6 flex flex-col items-center justify-center text-center bg-gradient-to-b from-surface to-surface-muted select-none">
             <div className="w-12 h-12 rounded-sm bg-forest/5 border border-forest/15 flex items-center justify-center text-forest mb-3">
-              <Code2 className="w-6 h-6" aria-hidden="true" />
+              {getFallbackIcon()}
             </div>
             <p className="font-serif text-lg text-forest font-medium">{project.title}</p>
             <p className="text-xs text-charcoal-muted mt-1 font-mono">
@@ -51,7 +55,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
         ) : (
           <img
             src={project.image!}
-            alt={`Preview of ${project.title}`}
+            alt={`Preview screenshot of ${project.title}`}
             onError={() => setImageError(true)}
             className="w-full h-full object-cover object-top"
             loading="lazy"
@@ -60,22 +64,24 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
       </div>
 
       {/* Card Content Body */}
-      <div className="p-6 sm:p-7 flex flex-col flex-1">
+      <div className="p-5 sm:p-7 flex flex-col flex-1">
         {/* Badges / Taxonomy row */}
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          <Badge variant="plum" size="sm">
-            {categoryLabel}
-          </Badge>
-
-          {project.featured && (
-            <Badge variant="forest" size="sm" icon={<Sparkles className="w-3 h-3" />}>
-              Featured
+          {project.projectType && (
+            <Badge variant={project.projectType === 'Major Project' ? 'plum' : 'neutral'} size="sm">
+              {project.projectType}
             </Badge>
           )}
 
-          {project.status === 'pending-review' && (
-            <Badge variant="pending" size="sm">
-              Pending Review
+          {project.year && (
+            <Badge variant="neutral" size="sm">
+              {project.year}
+            </Badge>
+          )}
+
+          {project.featured && (
+            <Badge variant="forest" size="sm" icon={<Sparkles className="w-3 h-3" aria-hidden="true" />}>
+              Featured
             </Badge>
           )}
 
@@ -90,6 +96,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
               Completed
             </Badge>
           )}
+
+          {project.status === 'pending-review' && (
+            <Badge variant="pending" size="sm">
+              Pending Review
+            </Badge>
+          )}
         </div>
 
         {/* Title */}
@@ -97,17 +109,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
           {project.title}
         </h3>
 
-        {/* Short Description */}
-        <p className="text-charcoal-muted text-sm leading-relaxed mb-4">
-          {project.shortDescription}
+        {/* Narrative Description */}
+        <p className="text-charcoal-muted text-sm leading-relaxed mb-6">
+          {project.description || project.shortDescription}
         </p>
-
-        {/* Detailed Narrative */}
-        {project.description && (
-          <p className="text-charcoal-muted/90 text-xs leading-relaxed mb-6 pt-3 border-t border-border/50">
-            {project.description}
-          </p>
-        )}
 
         {/* Tech Stack Badges */}
         <div className="mt-auto pt-4 border-t border-border/60">
@@ -130,7 +135,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
                 target="_blank"
                 variant="primary"
                 size="sm"
-                rightIcon={<ExternalLink className="w-3.5 h-3.5" />}
+                rightIcon={<ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />}
               >
                 Live Demo
               </Button>
@@ -142,7 +147,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className = '
                 target="_blank"
                 variant="secondary"
                 size="sm"
-                leftIcon={<Github className="w-3.5 h-3.5" />}
+                leftIcon={<Github className="w-3.5 h-3.5" aria-hidden="true" />}
               >
                 Source Code
               </Button>

@@ -1,0 +1,65 @@
+{
+  "disciplines": [
+    {
+      "id": "web-engineering",
+      "title": "Web Engineering",
+      "label": "Core Discipline",
+      "description": "Building modern, scalable web applications with clean architecture, responsive interfaces, and a focus on accessibility and performance.",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML5",
+        "Tailwind CSS",
+        "Vite",
+        "Node.js",
+        "Express.js"
+      ],
+      "icon": "web"
+    },
+    {
+      "id": "data-analytics",
+      "title": "Data Analytics",
+      "label": "Core Discipline",
+      "description": "Transforming complex operational data into meaningful insights through data processing, reconciliation, and analytical problem-solving.",
+      "technologies": [
+        "Python",
+        "Machine Learning",
+        "Pandas",
+        "Data Modeling",
+        "SQL",
+        "OpenPyXL"
+      ],
+      "icon": "analytics"
+    },
+    {
+      "id": "backend-engineering",
+      "title": "Backend Engineering",
+      "label": "Core Discipline",
+      "description": "Developing reliable backend systems, REST APIs, and database integrations designed for maintainability, efficiency, and scalability.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "MySQL"
+      ],
+      "icon": "backend"
+    },
+    {
+      "id": "systems-automation",
+      "title": "Systems & Automation",
+      "label": "Applied Engineering",
+      "description": "Automating repetitive workflows and connecting business systems through API integrations, data pipelines, and intelligent process design.",
+      "technologies": [
+        "REST APIs",
+        "Python Automation",
+        "Data Pipelines",
+        "System Integration",
+        "Excel Automation"
+      ],
+      "icon": "systems"
+    }
+  ]
+}

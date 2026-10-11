@@ -17,6 +17,7 @@ export interface SkillItem {
 export interface SkillCategory {
   readonly id: string;
   readonly name: string;
+  readonly label?: string;
   readonly description?: string;
   readonly skills: readonly SkillItem[];
 }

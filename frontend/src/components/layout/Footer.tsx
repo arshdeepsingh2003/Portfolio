@@ -17,10 +17,22 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-border">
           {/* Brand Column */}
           <div className="md:col-span-5 flex flex-col items-start">
-            <span className="font-serif text-2xl font-bold text-forest tracking-tight">
-              {brandConfig.wordmark}
-            </span>
-            <p className="mt-2 text-sm text-charcoal-muted max-w-sm leading-relaxed">
+            <div className="flex items-center gap-3">
+              <img
+                src={brandConfig.logoUrl}
+                alt={`${brandConfig.ownerDisplayName} Logo`}
+                className="w-10 h-10 rounded-lg object-cover border border-border bg-charcoal shadow-xs"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold text-forest tracking-tight leading-none">
+                  {brandConfig.wordmark}
+                </span>
+                <span className="text-[11px] font-mono tracking-wider text-plum uppercase mt-1">
+                  {brandConfig.ownerDisplayName} &bull; Software Developer
+                </span>
+              </div>
+            </div>
+            <p className="mt-3 text-sm text-charcoal-muted max-w-sm leading-relaxed">
               {brandConfig.description}
             </p>
             <div className="mt-4 flex items-center gap-2">

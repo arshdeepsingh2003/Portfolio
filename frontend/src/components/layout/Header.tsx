@@ -12,15 +12,26 @@ export const Header: React.FC = () => {
     <>
       <header className="sticky top-0 z-40 w-full bg-ivory/90 backdrop-blur-md border-b border-border/80 transition-colors">
         <Container as="nav" aria-label="Main Navigation" className="flex items-center justify-between h-16 sm:h-20">
-          {/* Wordmark logo */}
+          {/* Brand Logo & Wordmark */}
           <a
             href="#"
-            className="group flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded-sm py-1"
-            aria-label={`${brandConfig.wordmark} Homepage`}
+            className="group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded-sm py-1"
+            aria-label={`${brandConfig.ownerDisplayName} (${brandConfig.wordmark}) Homepage`}
           >
-            <span className="font-serif text-2xl sm:text-3xl font-bold text-forest tracking-tight group-hover:text-forest-hover transition-colors">
-              {brandConfig.wordmark}
-            </span>
+            <img
+              src={brandConfig.logoUrl}
+              alt={`${brandConfig.ownerDisplayName} Logo`}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-cover shadow-xs border border-border group-hover:border-forest/50 transition-colors bg-charcoal"
+              loading="eager"
+            />
+            <div className="flex flex-col">
+              <span className="font-serif text-xl sm:text-2xl font-bold text-forest tracking-tight group-hover:text-forest-hover transition-colors leading-none">
+                {brandConfig.wordmark}
+              </span>
+              <span className="text-[10px] font-mono tracking-wider text-plum uppercase mt-0.5">
+                Software Developer
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation Links */}

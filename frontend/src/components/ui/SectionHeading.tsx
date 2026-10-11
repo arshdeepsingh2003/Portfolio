@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface SectionHeadingProps {
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: React.ReactNode;
@@ -10,6 +11,7 @@ export interface SectionHeadingProps {
 }
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
+  id,
   eyebrow,
   title,
   description,
@@ -28,7 +30,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           {eyebrow}
         </span>
       )}
-      <HeadingTag className="font-serif text-3xl sm:text-4xl text-forest tracking-tight leading-tight">
+      <HeadingTag id={id} className="font-serif text-3xl sm:text-4xl text-forest tracking-tight leading-tight">
         {title}
       </HeadingTag>
       {description && (

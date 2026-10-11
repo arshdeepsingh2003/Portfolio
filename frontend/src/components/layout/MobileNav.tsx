@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, ArrowRight } from 'lucide-react';
 import { brandConfig } from '../../config/brand';
 import { Button } from '../ui/Button';
@@ -9,6 +9,10 @@ export interface MobileNavProps {
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
   // Lock body scroll when mobile navigation is active
   useEffect(() => {
     if (isOpen) {
@@ -21,11 +25,51 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
-  // Handle escape key to dismiss
+  // Manage focus when opened / closed
+  useEffect(() => {
+    if (isOpen) {
+      previouslyFocusedElementRef.current = document.activeElement as HTMLElement;
+      // Focus close button on open
+      const timer = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    } else if (previouslyFocusedElementRef.current) {
+      previouslyFocusedElementRef.current.focus();
+      previouslyFocusedElementRef.current = null;
+    }
+  }, [isOpen]);
+
+  // Handle escape key to dismiss & trap focus within drawer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (e.key === 'Tab' && drawerRef.current) {
+        const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -50,14 +94,30 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
       />
 
       {/* Drawer Panel */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-surface border-l border-border p-6 shadow-elevated flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-200">
+      <div
+        ref={drawerRef}
+        className="fixed inset-y-0 right-0 w-full max-w-xs bg-surface border-l border-border p-6 shadow-elevated flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-200"
+      >
         <div>
           {/* Header & Close Button */}
           <div className="flex items-center justify-between pb-6 border-b border-border">
-            <span className="font-serif text-2xl font-bold text-forest">
-              {brandConfig.wordmark}
-            </span>
+            <div className="flex items-center gap-2.5">
+              <img
+                src={brandConfig.logoUrl}
+                alt={`${brandConfig.ownerDisplayName} Logo`}
+                className="w-9 h-9 rounded-lg object-cover border border-border bg-charcoal"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-xl font-bold text-forest leading-none">
+                  {brandConfig.wordmark}
+                </span>
+                <span className="text-[10px] font-mono tracking-wider text-plum uppercase mt-0.5">
+                  Software Developer
+                </span>
+              </div>
+            </div>
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={onClose}
               className="p-2 -mr-2 rounded-sm text-charcoal hover:text-forest hover:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
