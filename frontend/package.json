@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "copy-logo": "node scripts/copy-logo.js",
+    "copy-resume": "node scripts/copy-resume.js",
     "preview": "vite preview"
   },
   "dependencies": {

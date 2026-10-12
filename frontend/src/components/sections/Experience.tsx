@@ -9,24 +9,31 @@ import { Badge } from '../ui/Badge';
 import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const Experience: React.FC = () => {
-  const experiences = rawExperienceData as ExperienceType[];
+  const section = !Array.isArray(rawExperienceData) && 'section' in rawExperienceData
+    ? (rawExperienceData as { section: { eyebrow: string; title: string; description: string } }).section
+    : {
+        eyebrow: 'Professional Experience',
+        title: 'Career Journey',
+        description: 'A verified record of full-stack development, AI system integration, and technical research internships across real-world business and research environments.',
+      };
+
+  const experiences: ExperienceType[] = (
+    Array.isArray(rawExperienceData) ? rawExperienceData : (rawExperienceData as { experiences: ExperienceType[] }).experiences || []
+  ) as ExperienceType[];
 
   return (
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="py-16 sm:py-24 border-b border-border/60 dark:border-white/10 bg-surface/30 dark:bg-[#121815]/50 relative"
+      className="py-16 sm:py-24 border-b border-border/60 dark:border-white/10 bg-warm-ivory dark:bg-[#0F1412] relative"
     >
-      {/* Anchor fallback for any incoming #about links */}
-      <span id="about" className="sr-only">Career Journey</span>
-
       <Container>
         <ScrollReveal animation="fade-up">
           <SectionHeading
             id="experience-heading"
-            eyebrow="Professional Experience"
-            title="Career Journey"
-            description="A verified record of full-stack development, AI system integration, and technical research internships across real-world business and research environments."
+            eyebrow={section.eyebrow}
+            title={section.title}
+            description={section.description}
           />
         </ScrollReveal>
 

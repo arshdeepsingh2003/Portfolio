@@ -2,9 +2,11 @@
  * Brand & Site Configuration
  * 
  * Central configuration for brand wordmark, site metadata, navigation items,
- * and external links. Missing or unverified personal details are strictly marked
- * as null/pending to prevent fabricating personal information.
+ * and external links. Sourced from `src/data/brand.json` so personal details and site
+ * configuration can be updated easily via JSON.
  */
+
+import rawBrandData from '../data/brand.json';
 
 export interface NavItem {
   readonly label: string;
@@ -15,11 +17,13 @@ export interface NavItem {
 }
 
 export interface ContactLinks {
-  /** Pending verification: Do not invent email address */
+  /** Verified contact email from resume */
   readonly email: string | null;
-  /** Pending verification: Do not invent GitHub URL */
+  /** Verified phone number from resume */
+  readonly phone?: string | null;
+  /** Verified GitHub profile URL */
   readonly githubUrl: string | null;
-  /** Pending verification: Do not invent LinkedIn URL */
+  /** Verified LinkedIn profile URL */
   readonly linkedinUrl: string | null;
   /** Verified local download file */
   readonly resumeUrl: string | null;
@@ -35,30 +39,7 @@ export interface BrandConfig {
   readonly contact: ContactLinks;
 }
 
-export const brandConfig: BrandConfig = {
-  // Configurable wordmark
-  wordmark: 'ARSH.DEV',
-  title: 'ARSH.DEV — Developer & Data Portfolio',
-  description: 'Full-stack developer portfolio showcasing web development, data analytics projects, and technical skills.',
-  ownerDisplayName: 'Arshdeep Singh',
-  logoUrl: './as-logo.png',
-
-  navItems: [
-    { label: 'About', href: '#about' },
-    { label: 'Work', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
-    { label: 'Resume', href: './resume.pdf', isDownload: true, downloadFileName: 'Arshdeep_Singh_Resume.pdf' },
-  ],
-
-  // Contact details strictly kept as null/pending until verified by owner
-  contact: {
-    email: null,
-    githubUrl: null,
-    linkedinUrl: null,
-    resumeUrl: './resume.pdf',
-  },
-} as const;
+export const brandConfig: BrandConfig = rawBrandData as BrandConfig;
 
 export const isPending = (value: string | null | undefined): boolean => {
   return !value || value.trim().length === 0;

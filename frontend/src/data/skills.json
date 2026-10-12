@@ -1,84 +1,91 @@
-[
-  {
-    "id": "frontend-engineering",
-    "name": "Frontend Engineering",
-    "label": "Core Discipline",
-    "description": "Building responsive, accessible, and high-performance user interfaces.",
-    "skills": [
-      { "name": "HTML5", "highlight": false, "status": "supported" },
-      { "name": "CSS3 and Tailwind CSS", "highlight": true, "status": "supported" },
-      { "name": "JavaScript", "highlight": false, "status": "supported" },
-      { "name": "React.js", "highlight": true, "status": "supported" },
-      { "name": "TypeScript", "highlight": true, "status": "supported" }
-    ]
+{
+  "section": {
+    "eyebrow": "Technical Capabilities",
+    "title": "Skills & Engineering Taxonomy",
+    "description": "A structured overview of core competencies across frontend, backend, data analytics, machine learning, systems automation, and engineering practices."
   },
-  {
-    "id": "backend-engineering",
-    "name": "Backend Engineering",
-    "label": "Core Discipline",
-    "description": "Developing scalable backend services, APIs, and application logic.",
-    "skills": [
-      { "name": "Python (FastAPI)", "highlight": true, "status": "supported" },
-      { "name": "Node.js", "highlight": false, "status": "supported" },
-      { "name": "Express.js", "highlight": false, "status": "supported" },
-      { "name": "REST API Architecture (API Integrations)", "highlight": true, "status": "supported" }
-    ]
-  },
-  {
-    "id": "data-analytics-modeling",
-    "name": "Data Analytics & Modeling",
-    "label": "Core Discipline",
-    "description": "Transforming complex data into meaningful insights through processing and analysis.",
-    "skills": [
-      { "name": "SQL", "highlight": true, "status": "supported" },
-      { "name": "MongoDB", "highlight": false, "status": "supported" },
-      { "name": "Pandas", "highlight": false, "status": "supported" },
-      { "name": "OpenPyXL", "highlight": false, "status": "supported" },
-      { "name": "Data Modeling", "highlight": false, "status": "supported" },
-      { "name": "Data Reconciliation", "highlight": false, "status": "supported" },
-      { "name": "Exploratory Data Analysis", "highlight": false, "status": "supported" }
-    ]
-  },
-  {
-    "id": "machine-learning-ai",
-    "name": "Machine Learning & AI",
-    "label": "Applied Intelligence",
-    "description": "Applying machine learning techniques to build intelligent, data-driven solutions.",
-    "skills": [
-      { "name": "Machine Learning", "highlight": true, "status": "supported" },
-      { "name": "TensorFlow", "highlight": true, "status": "supported" },
-      { "name": "Predictive Modeling", "highlight": false, "status": "supported" },
-      { "name": "Data Preprocessing", "highlight": false, "status": "supported" },
-      { "name": "Model Evaluation", "highlight": false, "status": "supported" },
-      { "name": "Feature Engineering", "highlight": false, "status": "supported" }
-    ]
-  },
-  {
-    "id": "systems-automation",
-    "name": "Systems & Automation",
-    "label": "Applied Engineering",
-    "description": "Automating repetitive workflows and connecting business systems efficiently.",
-    "skills": [
-      { "name": "Python Automation", "highlight": true, "status": "supported" },
-      { "name": "Workflow Automation", "highlight": false, "status": "supported" },
-      { "name": "Data Pipelines", "highlight": true, "status": "supported" },
-      { "name": "Excel Automation", "highlight": false, "status": "supported" },
-      { "name": "Microsoft Excel", "highlight": false, "status": "supported" },
-      { "name": "Power BI", "highlight": true, "status": "supported" }
-    ]
-  },
-  {
-    "id": "engineering-practices-tools",
-    "name": "Engineering Practices & Tools",
-    "label": "Engineering Practices",
-    "description": "Building maintainable software through effective development practices and problem-solving.",
-    "skills": [
-      { "name": "Git", "highlight": true, "status": "supported" },
-      { "name": "GitHub", "highlight": true, "status": "supported" },
-      { "name": "Debugging", "highlight": false, "status": "supported" },
-      { "name": "Problem Solving", "highlight": false, "status": "supported" },
-      { "name": "Analytical Thinking", "highlight": false, "status": "supported" },
-      { "name": "Database Management", "highlight": false, "status": "supported" }
-    ]
-  }
-]
+  "categories": [
+    {
+      "id": "frontend-engineering",
+      "name": "Frontend Engineering",
+      "label": "Core Discipline",
+      "description": "Building responsive, accessible, and high-performance user interfaces.",
+      "skills": [
+        { "name": "HTML5", "highlight": false, "status": "supported" },
+        { "name": "CSS3 and Tailwind CSS", "highlight": true, "status": "supported" },
+        { "name": "JavaScript", "highlight": false, "status": "supported" },
+        { "name": "React.js", "highlight": true, "status": "supported" },
+        { "name": "TypeScript", "highlight": true, "status": "supported" }
+      ]
+    },
+    {
+      "id": "backend-engineering",
+      "name": "Backend Engineering",
+      "label": "Core Discipline",
+      "description": "Developing scalable backend services, APIs, and application logic.",
+      "skills": [
+        { "name": "Python (FastAPI)", "highlight": true, "status": "supported" },
+        { "name": "Node.js", "highlight": false, "status": "supported" },
+        { "name": "Express.js", "highlight": false, "status": "supported" },
+        { "name": "REST API Architecture (API Integrations)", "highlight": true, "status": "supported" }
+      ]
+    },
+    {
+      "id": "data-analytics-modeling",
+      "name": "Data Analytics & Modeling",
+      "label": "Core Discipline",
+      "description": "Transforming complex data into meaningful insights through processing and analysis.",
+      "skills": [
+        { "name": "SQL", "highlight": true, "status": "supported" },
+        { "name": "MongoDB", "highlight": false, "status": "supported" },
+        { "name": "Pandas", "highlight": false, "status": "supported" },
+        { "name": "OpenPyXL", "highlight": false, "status": "supported" },
+        { "name": "Data Modeling", "highlight": false, "status": "supported" },
+        { "name": "Data Reconciliation", "highlight": false, "status": "supported" },
+        { "name": "Exploratory Data Analysis", "highlight": false, "status": "supported" }
+      ]
+    },
+    {
+      "id": "machine-learning-ai",
+      "name": "Machine Learning & AI",
+      "label": "Applied Intelligence",
+      "description": "Applying machine learning techniques to build intelligent, data-driven solutions.",
+      "skills": [
+        { "name": "Machine Learning", "highlight": true, "status": "supported" },
+        { "name": "TensorFlow", "highlight": true, "status": "supported" },
+        { "name": "Predictive Modeling", "highlight": false, "status": "supported" },
+        { "name": "Data Preprocessing", "highlight": false, "status": "supported" },
+        { "name": "Model Evaluation", "highlight": false, "status": "supported" },
+        { "name": "Feature Engineering", "highlight": false, "status": "supported" }
+      ]
+    },
+    {
+      "id": "systems-automation",
+      "name": "Systems & Automation",
+      "label": "Applied Engineering",
+      "description": "Automating repetitive workflows and connecting business systems efficiently.",
+      "skills": [
+        { "name": "Python Automation", "highlight": true, "status": "supported" },
+        { "name": "Workflow Automation", "highlight": false, "status": "supported" },
+        { "name": "Data Pipelines", "highlight": true, "status": "supported" },
+        { "name": "Excel Automation", "highlight": false, "status": "supported" },
+        { "name": "Microsoft Excel", "highlight": false, "status": "supported" },
+        { "name": "Power BI", "highlight": true, "status": "supported" }
+      ]
+    },
+    {
+      "id": "engineering-practices-tools",
+      "name": "Engineering Practices & Tools",
+      "label": "Engineering Practices",
+      "description": "Building maintainable software through effective development practices and problem-solving.",
+      "skills": [
+        { "name": "Git", "highlight": true, "status": "supported" },
+        { "name": "GitHub", "highlight": true, "status": "supported" },
+        { "name": "Debugging", "highlight": false, "status": "supported" },
+        { "name": "Problem Solving", "highlight": false, "status": "supported" },
+        { "name": "Analytical Thinking", "highlight": false, "status": "supported" },
+        { "name": "Database Management", "highlight": false, "status": "supported" }
+      ]
+    }
+  ]
+}

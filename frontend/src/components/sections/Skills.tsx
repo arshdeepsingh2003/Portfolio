@@ -8,7 +8,17 @@ import { Badge } from '../ui/Badge';
 import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const Skills: React.FC = () => {
-  const categories: readonly SkillCategory[] = rawSkillsData as SkillCategory[];
+  const section = !Array.isArray(rawSkillsData) && 'section' in rawSkillsData
+    ? (rawSkillsData as { section: { eyebrow: string; title: string; description: string } }).section
+    : {
+        eyebrow: 'Technical Capabilities',
+        title: 'Skills & Engineering Taxonomy',
+        description: 'A structured overview of core competencies across frontend, backend, data analytics, machine learning, systems automation, and engineering practices.',
+      };
+
+  const categories: readonly SkillCategory[] = (
+    Array.isArray(rawSkillsData) ? rawSkillsData : (rawSkillsData as { categories: SkillCategory[] }).categories || []
+  ) as SkillCategory[];
 
   return (
     <section id="skills" aria-labelledby="skills-heading" className="py-16 sm:py-24 border-b border-border/60 dark:border-white/10 bg-warm-ivory dark:bg-[#0F1412]">
@@ -16,9 +26,9 @@ export const Skills: React.FC = () => {
         <ScrollReveal animation="fade-up">
           <SectionHeading
             id="skills-heading"
-            eyebrow="Technical Capabilities"
-            title="Skills & Engineering Taxonomy"
-            description="A structured overview of core competencies across frontend, backend, data analytics, machine learning, systems automation, and engineering practices."
+            eyebrow={section.eyebrow}
+            title={section.title}
+            description={section.description}
           />
         </ScrollReveal>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Download } from 'lucide-react';
 import { brandConfig } from '../../config/brand';
+import headerData from '../../data/header.json';
 import { Button } from '../ui/Button';
 
 export interface MobileNavProps {
@@ -144,7 +145,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                   {brandConfig.wordmark}
                 </span>
                 <span className="text-[10px] font-mono tracking-wider text-plum dark:text-purple-300 uppercase mt-0.5">
-                  Software Developer
+                  {headerData.mobileMenu.roleSubtitle || 'Software Developer'}
                 </span>
               </div>
             </div>
@@ -153,7 +154,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
               type="button"
               onClick={onClose}
               className="p-2 -mr-2 rounded-lg text-charcoal dark:text-ivory hover:text-forest dark:hover:text-emerald-400 hover:bg-ivory dark:hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
-              aria-label="Close navigation menu"
+              aria-label={headerData.mobileMenu.closeAria || 'Close navigation menu'}
             >
               <X className="w-6 h-6" aria-hidden="true" />
             </button>
@@ -185,13 +186,13 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
         {/* Bottom CTA in Drawer */}
         <div className="pt-6 border-t border-border dark:border-white/10 mt-6">
           <Button
-            href="#contact"
+            href={headerData.mobileMenu.ctaButton.href || '#contact'}
             variant="primary"
             size="md"
             className="w-full"
             onClick={onClose}
           >
-            Get in Touch
+            {headerData.mobileMenu.ctaButton.label || 'Get in Touch'}
           </Button>
           <p className="mt-4 text-center text-xs text-charcoal-muted dark:text-neutral-400">
             {brandConfig.description}

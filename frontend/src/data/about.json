@@ -1,0 +1,41 @@
+{
+  "eyebrow": "FULL STACK DEVELOPER",
+  "headline": "Designing resilient web applications & turning data into decisive insight",
+  "headlineAccent": ".",
+  "greeting": "Hello, I'm",
+  "name": "Arshdeep Singh",
+  "roleIntro": ", a Full Stack Developer.",
+  "bio": "I build modern, scalable web applications with a focus on clean code, thoughtful design, and seamless user experiences. Beyond development, I leverage data analytics to transform complex operational data into actionable insights and solve real-world problems through technology.",
+  "buttons": {
+    "primary": {
+      "label": "View My Work",
+      "href": "#projects"
+    },
+    "secondary": {
+      "label": "Download Resume",
+      "href": "./resume.pdf",
+      "downloadFileName": "Arshdeep_Singh_Resume.pdf"
+    }
+  },
+  "highlights": [
+    {
+      "id": "web-development",
+      "label": "Web Development",
+      "icon": "Code2"
+    },
+    {
+      "id": "data-analytics",
+      "label": "Data Analytics",
+      "icon": "Database"
+    },
+    {
+      "id": "problem-solving",
+      "label": "Problem Solving",
+      "icon": "Lightbulb"
+    }
+  ],
+  "background": {
+    "imageSrc": "./images/hero-clean-bg.jpg",
+    "imageAlt": "Modern developer workspace setup featuring code editor, interactive data visualizations, and hardware devices"
+  }
+}

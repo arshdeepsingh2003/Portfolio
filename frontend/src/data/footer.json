@@ -1,0 +1,19 @@
+{
+  "roleSubtitle": "Software Developer",
+  "statusText": "Open to opportunities",
+  "headings": {
+    "navigation": "Navigation",
+    "contact": "Direct Contact"
+  },
+  "labels": {
+    "email": "Email",
+    "phone": "Phone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "viewProfile": "View Profile",
+    "pendingBadge": "Pending",
+    "backToTop": "Back to top",
+    "backToTopAria": "Scroll back to top of page",
+    "rightsReserved": "All rights reserved."
+  }
+}

@@ -460,4 +460,94 @@ Employment history, experience years, achievements, metrics, testimonials, URLs,
   - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
   - `npm run build`: PASSED (Exit code 0, 1616 modules transformed in 8.82s).
 
+## Phase 18 Navbar Skills Option & Section Reordering (Completed)
+- **Added Skills to Navbar:**
+  - Added `{ label: 'Skills', href: '#skills' }` to `brandConfig.navItems` in [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts).
+  - Structured navigation items to match exact top-to-bottom section sequence: `About` (`#about`), `Skills` (`#skills`), `Projects` (`#projects`), `Experience` (`#experience`), `Contact` (`#contact`), and `Resume` (`./resume.pdf`).
+- **Reordered Sections in App.tsx:**
+  - Positioned [Projects](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Projects.tsx) before [Experience](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Experience.tsx) (Career Journey) in [App.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/App.tsx).
+- **Active Section Tracking & Cleanups:**
+  - Updated [useActiveSection.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/hooks/useActiveSection.ts) and [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx) to monitor sections in the updated DOM order: `['about', 'skills', 'projects', 'experience', 'contact']`.
+  - Swapped section background styling so that [Projects.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Projects.tsx) (`bg-surface/30 dark:bg-[#121815]/50`) and [Experience.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Experience.tsx) (`bg-warm-ivory dark:bg-[#0F1412]`) maintain alternating contrast with adjacent sections.
+  - Removed duplicate legacy `<span id="about" className="sr-only">Career Journey</span>` from [Experience.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Experience.tsx).
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1616 modules transformed in 21.88s).
+
+## Phase 19 Official Resume Integration & Verified Contact Configuration (Completed)
+- **Official Resume PDF Sourced:**
+  - Copied user's genuine resume PDF (`Arshdeep_web_resume.pdf`, 73 KB) into `frontend/public/resume.pdf` and `frontend/dist/resume.pdf` using dedicated [copy-resume.js](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/scripts/copy-resume.js).
+  - Nav bar "Resume" button and all "Download Resume" / "Curriculum Vitae" buttons across the application now download the authentic full resume.
+- **Configured Verified Contact Details in brandConfig:**
+  - Updated `brandConfig.contact` in [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts) with extracted details:
+    - Email: `arshdeepgtbit@gmail.com`
+    - Phone: `+91-8799793855`
+    - GitHub: `https://github.com/arshdeepsingh2003`
+    - LinkedIn: `https://linkedin.com/in/arshdeep-singh-7168a937a`
+    - Resume: `./resume.pdf`
+- **Updated Contact Section & Footer Channels:**
+  - [Contact.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Contact.tsx): Email badge now displays "Active Channel" with 1-click copy and "Compose Email" actions; phone number displayed with click-to-call link; LinkedIn badge displays "Verified Network" linking to profile; GitHub badge displays "Verified Account" linking to repositories.
+  - [Footer.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Footer.tsx): Direct Contact includes active Email, Phone, GitHub, and LinkedIn links.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1616 modules transformed in 9.59s).
+
+## Phase 20 Scroll Restoration & Refresh Navigation to About (Completed)
+- **Manual Scroll Restoration & Early Head Script ([index.html](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/index.html)):**
+  - Configured `history.scrollRestoration = 'manual'` inside the inline `<head>` execution script to disable browser automatic restoration of cached scroll coordinates on reload.
+  - Added a `beforeunload` listener to reset viewport scroll to top (0, 0) upon page refresh or unload.
+- **On-Mount Navigation to About ([App.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/App.tsx)):**
+  - Implemented a mount effect with `scrollIntoView({ behavior: 'instant' })` and `window.scrollTo(0, 0)` fallback targeting `#about`.
+  - Added multi-stage synchronization (`requestAnimationFrame` and microtask timeout) guaranteeing that late browser scroll restoration does not override the reset.
+  - Aligned URL hash using `window.history.replaceState(null, '', '#about')` so the address bar reflects `#about` and the fixed navbar active section indicator cleanly highlights the About section.
+- **In-Session User Navigation Unaffected:**
+  - Anchor link clicks (`#skills`, `#projects`, `#experience`, `#contact`) and smooth manual page scrolling during the active session remain responsive and fluid.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1616 modules transformed in 9.40s).
+
+## Phase 21 Component JSON Data Externalization (Completed)
+- **Component JSON Data Architecture ([frontend/src/data/](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/)):**
+  - Sourced all content, headings, button labels, external links, and copy across the entire portfolio into dedicated, modular JSON files:
+    - [about.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/about.json): Drives the About section copy, headline, accent punctuation, bio paragraphs, CTA button links/labels, capability highlights, and background image attributes.
+    - [skills.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/skills.json): Drives the Skills section heading metadata and 6 verified skill categories with all technical tags.
+    - [projects.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/projects.json): Drives the Projects section heading metadata, empty state message, and 6 verified projects.
+    - [experience.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/experience.json): Drives the Experience section heading metadata and career journey internships with roles, dates, locations, overviews, focus areas, and tooling tags.
+    - [contact.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/contact.json): Drives the Contact section heading, the 4 communication channel cards (email, GitHub, LinkedIn, Résumé), interactive action labels, and 3 communication guarantees.
+    - [header.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/header.json): Drives navigation logo alt text, theme toggle accessibility labels, mobile menu open/close labels, and drawer CTA button.
+    - [footer.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/footer.json): Drives footer role subtitle, status badge copy, navigation/contact headings, channel labels, copyright text, and back-to-top button.
+    - [brand.json](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/data/brand.json): Centralizes wordmark, site metadata, navigation items list, and verified personal contact details (email, phone, GitHub, LinkedIn, Résumé).
+- **Component Refactoring:**
+  - [About.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/About.tsx): Imports `about.json` for dynamic copy, CTAs, and capability badges.
+  - [Skills.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Skills.tsx): Dynamically unwraps section heading and categories from `skills.json`.
+  - [Projects.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Projects.tsx) & [ProjectList.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/projects/ProjectList.tsx): Dynamically unwraps section heading and projects array from `projects.json`.
+  - [Experience.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Experience.tsx): Dynamically unwraps section heading and experience entries from `experience.json`.
+  - [Contact.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/Contact.tsx): Consumes `contact.json` for all channel text, guarantees, and section headings.
+  - [Header.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Header.tsx) & [MobileNav.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/MobileNav.tsx): Consumes `header.json`.
+  - [Footer.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/layout/Footer.tsx): Consumes `footer.json`.
+  - [brand.ts](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/config/brand.ts): Sourced from `brand.json` with full TypeScript interfaces intact.
+  - [About.tsx](file:///c:/Users/dell/Documents/GitHub/Portfolio/frontend/src/components/sections/About.tsx): Added conditional rendering guard for `brandBadge`, removing the empty white pill container when the field is omitted from `about.json`.
+- **Verification Run Results:**
+  - `npm run lint`: PASSED (Exit code 0, 0 warnings, 0 errors).
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1621 modules transformed in 9.42s).
+
+### Phase 22: Minimal Contact Strip & Hero Social Contact Integration
+- **Hero Section Social/Contact Icons (`About.tsx`):**
+  - Added 4 small clickable icons (LinkedIn, GitHub, Phone, Email) in the bottom capability highlights row alongside Web Development, Data Analytics, and Problem Solving.
+  - Divided by a subtle vertical separator line matching Screenshot 1.
+  - Configured with verified URLs (`https://www.linkedin.com/in/er-arshdeep-singh-7168a937a/`, `https://github.com/arshdeepsingh2003`, `tel:+91-8799793855`, `mailto:arshdeepgtbit@gmail.com`).
+- **Minimal Horizontal Contact Strip (`Contact.tsx`):**
+  - Removed large contact cards, heavy borders, long descriptions, status badges, guarantees box, and duplicate Resume card.
+  - Created a minimal horizontal contact strip matching Screenshot 2 with 4 options: LinkedIn, GitHub, Phone (`Call`), Email (`Email`).
+  - Increased font size of phone number (`+91-8799793855`) and email (`arshdeepgtbit@gmail.com`) to ~16–18px (`text-base sm:text-[17px]`) with medium weight (`font-medium`) and high contrast.
+  - Added vertical dividers between items on desktop viewports and smooth wrapping for mobile viewports without horizontal overflow.
+- **Verification Run Results:**
+  - `npm run typecheck`: PASSED (Exit code 0, 0 errors).
+  - `npm run lint`: PASSED (Exit code 0, 0 errors).
+  - `npm run build`: PASSED (Exit code 0, 1621 modules transformed in 9.93s).
+
 

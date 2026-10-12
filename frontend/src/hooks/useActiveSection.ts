@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 /**
  * Hook to track current active section anchor and header scroll state.
  */
-export function useActiveSection(sectionIds: string[] = ['about', 'skills', 'experience', 'projects', 'contact']) {
+export function useActiveSection(sectionIds: string[] = ['about', 'skills', 'projects', 'experience', 'contact']) {
   const [activeSection, setActiveSection] = useState<string>('#about');
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 

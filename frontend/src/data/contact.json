@@ -1,0 +1,73 @@
+{
+  "section": {
+    "eyebrow": "Direct Inquiries & Collaboration",
+    "title": "Direct Contact & Networks",
+    "description": "Open for full-stack web engineering roles, data analytics initiatives, and consulting engagements. Reaching out directly is preferred—no tracking forms or third-party CRM."
+  },
+  "channels": {
+    "email": {
+      "title": "Direct Email",
+      "badgeActive": "Active Channel",
+      "badgePending": "Pending Verification",
+      "subtitle": "Primary correspondence inbox",
+      "description": "For technical inquiries, full-time engineering roles, or consulting requests. Directly reaches my inbox without intermediate routing.",
+      "buttonText": "Compose Email",
+      "copiedMessage": "Copied to clipboard!",
+      "failedMessage": "Unable to copy. Please select text manually.",
+      "phoneLabel": "Phone:",
+      "pendingTitle": "Address Pending Review",
+      "pendingDescription": "Direct email is configured in src/config/brand.ts and awaiting verification to avoid displaying unverified contact addresses."
+    },
+    "github": {
+      "title": "GitHub Profile",
+      "badgeActive": "Verified Account",
+      "badgePending": "Pending Verification",
+      "subtitle": "Code repositories & experiments",
+      "description": "Inspect open-source code repositories, version history, system blueprints, and frontend architectural experiments.",
+      "buttonText": "Explore Repositories",
+      "pendingTitle": "Profile Link Pending",
+      "pendingDescription": "GitHub handle configured in brand settings and awaiting verification to prevent broken links."
+    },
+    "linkedin": {
+      "title": "LinkedIn Profile",
+      "badgeActive": "Verified Network",
+      "badgePending": "Pending Verification",
+      "subtitle": "Professional history & networking",
+      "description": "Connect for professional collaboration, background verification, peer networking, or career opportunities.",
+      "buttonText": "Connect on LinkedIn",
+      "pendingTitle": "Profile Link Pending",
+      "pendingDescription": "LinkedIn profile URL is awaiting owner review in brand configuration before being displayed publicly."
+    },
+    "resume": {
+      "title": "Curriculum Vitae",
+      "badgeActive": "Document Ready",
+      "badgePending": "Pending Verification",
+      "subtitle": "Comprehensive technical résumé",
+      "description": "A comprehensive chronological view of engineering proficiencies, analytics experience, tooling, and education.",
+      "buttonText": "Download Résumé",
+      "downloadFileName": "Arshdeep_Singh_Resume.pdf",
+      "pendingTitle": "Document Pending Review",
+      "pendingDescription": "Official résumé document is pending owner verification to uphold strict data accuracy standards."
+    }
+  },
+  "guarantees": {
+    "title": "Direct Communication Guarantees",
+    "items": [
+      {
+        "title": "Direct Privacy & Security",
+        "description": "No third-party tracking scripts, external tracking forms, or unsolicited data collection. Communication occurs directly between your mail client and my verified inbox."
+      },
+      {
+        "title": "Direct Technical Discourse",
+        "description": "Connect directly with the developer. Inquiries regarding frontend architecture, TypeScript systems, or Python reconciliation routines receive thoughtful attention."
+      },
+      {
+        "title": "Status & Availability",
+        "prefix": "Currently open to opportunities and collaborative engineering projects under the",
+        "suffix": "brand."
+      }
+    ],
+    "colophonNote": "Configured centrally via frontend/src/config/brand.ts",
+    "badgeText": "No backend form API required"
+  }
+}

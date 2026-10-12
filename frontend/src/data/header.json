@@ -1,0 +1,16 @@
+{
+  "logoAlt": "ARSH.DEV",
+  "themeToggle": {
+    "ariaLight": "Switch to light mode",
+    "ariaDark": "Switch to dark mode"
+  },
+  "mobileMenu": {
+    "openAria": "Open navigation menu",
+    "closeAria": "Close navigation menu",
+    "roleSubtitle": "Software Developer",
+    "ctaButton": {
+      "label": "Get in Touch",
+      "href": "#contact"
+    }
+  }
+}

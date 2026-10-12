@@ -18,6 +18,12 @@
     <script>
       (function() {
         try {
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+          }
+          window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+          });
           var key = 'portfolio-theme-preference';
           var stored = localStorage.getItem(key);
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

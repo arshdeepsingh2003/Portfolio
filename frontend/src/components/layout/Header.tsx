@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { brandConfig } from '../../config/brand';
+import headerData from '../../data/header.json';
 import { MobileNav } from './MobileNav';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { useTheme } from '../../hooks/useTheme';
@@ -8,7 +9,7 @@ import { useTheme } from '../../hooks/useTheme';
 export const Header: React.FC = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const { isDark, toggleTheme } = useTheme();
-  const { activeSection, isScrolled } = useActiveSection(['about', 'skills', 'experience', 'projects', 'contact']);
+  const { activeSection, isScrolled } = useActiveSection(['about', 'skills', 'projects', 'experience', 'contact']);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -43,7 +44,7 @@ export const Header: React.FC = () => {
             >
               <img
                 src={brandConfig.logoUrl}
-                alt={brandConfig.wordmark}
+                alt={headerData.logoAlt || brandConfig.wordmark}
                 className="w-full h-full object-contain p-0.5"
               />
             </div>
@@ -82,8 +83,8 @@ export const Header: React.FC = () => {
               type="button"
               onClick={toggleTheme}
               className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-charcoal/15 dark:border-white/15 bg-transparent hover:bg-black/5 dark:hover:bg-white/10 flex items-center justify-center text-charcoal dark:text-ivory transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 active:scale-95"
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={isDark ? headerData.themeToggle.ariaDark : headerData.themeToggle.ariaLight}
+              title={isDark ? headerData.themeToggle.ariaDark : headerData.themeToggle.ariaLight}
             >
               {isDark ? (
                 <Sun className="w-4 h-4 text-amber-300 stroke-[1.8] animate-spin-slow" aria-hidden="true" />
@@ -97,7 +98,7 @@ export const Header: React.FC = () => {
               type="button"
               onClick={() => setIsMobileNavOpen(true)}
               className="md:hidden w-8 h-8 rounded-xl border border-charcoal/15 dark:border-white/15 bg-transparent hover:bg-black/5 dark:hover:bg-white/10 flex items-center justify-center text-charcoal dark:text-ivory transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest dark:focus-visible:ring-emerald-400"
-              aria-label="Open navigation menu"
+              aria-label={headerData.mobileMenu.openAria}
               aria-expanded={isMobileNavOpen}
               aria-controls="mobile-navigation"
             >

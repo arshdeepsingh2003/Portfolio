@@ -31,10 +31,14 @@ export const ProjectList: React.FC<ProjectListProps> = ({
   className = '',
 }) => {
   // Load and normalize projects from JSON if not passed via props
+  const rawList = Array.isArray(rawProjectsData)
+    ? rawProjectsData
+    : (rawProjectsData as { projects?: unknown[] }).projects || [];
+
   const sourceProjects: Project[] =
     projects !== undefined
       ? [...projects]
-      : (rawProjectsData as unknown[]).map(normalizeProject);
+      : (rawList as unknown[]).map(normalizeProject);
 
   // Apply category filtering if requested
   let displayedProjects = category

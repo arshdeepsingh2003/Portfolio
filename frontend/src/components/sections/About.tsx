@@ -1,7 +1,14 @@
 import React from 'react';
-import { ArrowRight, Download, Code2, Database, Lightbulb } from 'lucide-react';
+import { ArrowRight, Download, Code2, Database, Lightbulb, Linkedin, Github, Phone, Mail } from 'lucide-react';
 import { brandConfig } from '../../config/brand';
 import { Container } from '../layout/Container';
+import aboutData from '../../data/about.json';
+
+const highlightIcons: Record<string, React.ReactNode> = {
+  Code2: <Code2 className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />,
+  Database: <Database className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />,
+  Lightbulb: <Lightbulb className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />,
+};
 
 export const About: React.FC = () => {
   return (
@@ -13,8 +20,8 @@ export const About: React.FC = () => {
       {/* Full-width Panoramic Background Workspace Graphic extending to the very top */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
         <img
-          src="./images/hero-clean-bg.jpg"
-          alt="Modern developer workspace setup featuring code editor, interactive data visualizations, and hardware devices"
+          src={aboutData.background?.imageSrc || './images/hero-clean-bg.jpg'}
+          alt={aboutData.background?.imageAlt || 'Modern developer workspace setup featuring code editor, interactive data visualizations, and hardware devices'}
           className="w-full h-full object-cover object-[80%_center] lg:object-center dark:brightness-[0.80] dark:contrast-[1.25] dark:saturate-[1.15] transition-[filter] duration-300"
           loading="eager"
         />
@@ -37,70 +44,113 @@ export const About: React.FC = () => {
           <div className="flex items-center gap-3 mb-5 sm:mb-6 animate-hero-fade [animation-delay:60ms]">
             <span className="w-8 h-[2.5px] bg-[#E0592A] dark:bg-[#FF6B35] rounded-full dark:shadow-[0_0_10px_rgba(255,107,53,0.8)]" aria-hidden="true" />
             <span className="font-mono text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold text-charcoal/80 dark:text-emerald-400">
-              FULL STACK DEVELOPER
+              {aboutData.eyebrow}
             </span>
           </div>
 
           {/* Main Editorial Headline with Orange Period Accent */}
           <h1 className="font-serif text-3.5xl sm:text-5xl lg:text-5xl xl:text-[56px] text-forest dark:text-[#F3F4F6] font-bold tracking-tight leading-[1.1] mb-5 sm:mb-6 animate-hero-slide [animation-delay:150ms]">
-            Designing resilient web applications &amp; turning data into decisive insight
-            <span className="text-[#E0592A] dark:text-[#FF6B35] dark:drop-shadow-[0_0_12px_rgba(255,107,53,0.6)]">.</span>
+            {aboutData.headline}
+            <span className="text-[#E0592A] dark:text-[#FF6B35] dark:drop-shadow-[0_0_12px_rgba(255,107,53,0.6)]">
+              {aboutData.headlineAccent}
+            </span>
           </h1>
 
           {/* Introduction Paragraph */}
           <p className="text-charcoal/85 dark:text-[#D1D5DB] text-base sm:text-lg leading-relaxed mb-8 max-w-2xl animate-hero-slide [animation-delay:260ms]">
-            Hello, I&apos;m <strong className="font-semibold text-charcoal dark:text-white">{brandConfig.ownerDisplayName}</strong>, a Full Stack Developer behind{' '}
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs sm:text-sm font-mono font-bold bg-[#EFEAE2]/90 dark:bg-[#16201B] text-charcoal dark:text-emerald-300 border border-border/70 dark:border-emerald-500/30 dark:shadow-[0_0_15px_rgba(52,211,153,0.15)]">
-              ARSH . DEV
-            </span>
-            . I build modern, scalable web applications with a focus on clean code, thoughtful design, and seamless user experiences. Beyond development, I leverage data analytics to transform complex operational data into actionable insights and solve real-world problems through technology.
+            {aboutData.greeting} <strong className="font-semibold text-charcoal dark:text-white">{aboutData.name || brandConfig.ownerDisplayName}</strong>{aboutData.roleIntro}
+            {'brandBadge' in aboutData && Boolean((aboutData as { brandBadge?: string }).brandBadge) && (
+              <>
+                {' '}
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs sm:text-sm font-mono font-bold bg-[#EFEAE2]/90 dark:bg-[#16201B] text-charcoal dark:text-emerald-300 border border-border/70 dark:border-emerald-500/30 dark:shadow-[0_0_15px_rgba(52,211,153,0.15)]">
+                  {(aboutData as { brandBadge?: string }).brandBadge}
+                </span>
+              </>
+            )}{' '}
+            {aboutData.bio}
           </p>
 
           {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto animate-hero-slide [animation-delay:360ms]">
             <a
-              href="#projects"
+              href={aboutData.buttons.primary.href}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#E0592A] hover:bg-[#C94A1F] dark:bg-[#E0592A] dark:hover:bg-[#FF6B35] text-white font-medium text-sm sm:text-base shadow-sm hover:shadow-md dark:shadow-[0_0_24px_rgba(224,89,42,0.4)] transition-all duration-200 group w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0592A] focus-visible:ring-offset-2"
             >
-              <span>View My Work</span>
+              <span>{aboutData.buttons.primary.label}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </a>
 
             <a
-              href={brandConfig.contact.resumeUrl || './resume.pdf'}
-              download="Arshdeep_Singh_Resume.pdf"
+              href={aboutData.buttons.secondary.href || brandConfig.contact.resumeUrl || './resume.pdf'}
+              download={aboutData.buttons.secondary.downloadFileName || 'Arshdeep_Singh_Resume.pdf'}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[#E0592A]/60 dark:border-[#FF6B35]/60 hover:border-[#E0592A] dark:hover:border-[#FF6B35] bg-[#FAF6EE]/60 hover:bg-[#FAF6EE] dark:bg-[#141C18]/80 dark:hover:bg-[#FF6B35]/15 text-charcoal dark:text-ivory hover:text-charcoal dark:hover:text-white transition-all duration-200 text-sm sm:text-base font-medium w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0592A] focus-visible:ring-offset-2"
             >
-              <span>Download Resume</span>
+              <span>{aboutData.buttons.secondary.label}</span>
               <Download className="w-4 h-4 text-[#E0592A] dark:text-[#FF6B35]" aria-hidden="true" />
             </a>
           </div>
 
-          {/* Bottom 3 Capability Highlights matching mockup */}
+          {/* Bottom 3 Capability Highlights matching mockup + 4 Clickable Contact Icons */}
           <div className="pt-8 sm:pt-10 mt-6 sm:mt-8 flex flex-wrap items-center gap-5 sm:gap-7 text-charcoal/85 dark:text-ivory animate-hero-fade [animation-delay:460ms]">
-            <div className="flex items-center gap-2.5">
-              <Code2 className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />
-              <span className="font-mono text-xs sm:text-sm font-medium leading-tight dark:text-white">
-                Web Development
-              </span>
-            </div>
+            {aboutData.highlights.map((item, index) => (
+              <React.Fragment key={item.id || item.label}>
+                <div className="flex items-center gap-2.5">
+                  {highlightIcons[item.icon] || <Code2 className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />}
+                  <span className="font-mono text-xs sm:text-sm font-medium leading-tight dark:text-white">
+                    {item.label}
+                  </span>
+                </div>
 
+                {index < aboutData.highlights.length - 1 && (
+                  <span className="h-6 w-px bg-charcoal/20 dark:bg-emerald-500/25 hidden sm:block" aria-hidden="true" />
+                )}
+              </React.Fragment>
+            ))}
+
+            {/* Subtle vertical divider matching Screenshot 1 */}
             <span className="h-6 w-px bg-charcoal/20 dark:bg-emerald-500/25 hidden sm:block" aria-hidden="true" />
 
-            <div className="flex items-center gap-2.5">
-              <Database className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />
-              <span className="font-mono text-xs sm:text-sm font-medium leading-tight dark:text-white">
-                Data Analytics
-              </span>
-            </div>
+            {/* Clickable Social & Direct Contact Icons */}
+            <div className="flex items-center gap-3.5 sm:gap-4 text-charcoal/85 dark:text-emerald-400">
+              <a
+                href={brandConfig.contact.linkedinUrl || "https://www.linkedin.com/in/er-arshdeep-singh-7168a937a/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                title="LinkedIn"
+                className="hover:text-forest dark:hover:text-emerald-300 hover:scale-110 transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 rounded-sm"
+              >
+                <Linkedin className="w-5 h-5 stroke-[1.8]" aria-hidden="true" />
+              </a>
 
-            <span className="h-6 w-px bg-charcoal/20 dark:bg-emerald-500/25 hidden sm:block" aria-hidden="true" />
+              <a
+                href={brandConfig.contact.githubUrl || "https://github.com/arshdeepsingh2003"}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                title="GitHub"
+                className="hover:text-forest dark:hover:text-emerald-300 hover:scale-110 transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 rounded-sm"
+              >
+                <Github className="w-5 h-5 stroke-[1.8]" aria-hidden="true" />
+              </a>
 
-            <div className="flex items-center gap-2.5">
-              <Lightbulb className="w-5 h-5 text-charcoal dark:text-emerald-400 stroke-[1.8] dark:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]" aria-hidden="true" />
-              <span className="font-mono text-xs sm:text-sm font-medium leading-tight dark:text-white">
-                Problem Solving
-              </span>
+              <a
+                href={`tel:${brandConfig.contact.phone || '+91-8799793855'}`}
+                aria-label="Call +91-8799793855"
+                title="+91-8799793855"
+                className="hover:text-forest dark:hover:text-emerald-300 hover:scale-110 transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 rounded-sm"
+              >
+                <Phone className="w-5 h-5 stroke-[1.8]" aria-hidden="true" />
+              </a>
+
+              <a
+                href={`mailto:${brandConfig.contact.email || 'arshdeepgtbit@gmail.com'}`}
+                aria-label="Email arshdeepgtbit@gmail.com"
+                title="arshdeepgtbit@gmail.com"
+                className="hover:text-forest dark:hover:text-emerald-300 hover:scale-110 transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-forest dark:focus-visible:ring-emerald-400 rounded-sm"
+              >
+                <Mail className="w-5 h-5 stroke-[1.8]" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,22 @@
+{
+  "wordmark": "ARSH.DEV",
+  "title": "ARSH.DEV — Developer & Data Portfolio",
+  "description": "Full-stack developer portfolio showcasing web development, data analytics projects, and technical skills.",
+  "ownerDisplayName": "Arshdeep Singh",
+  "logoUrl": "./as-logo.png",
+  "navItems": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Contact", "href": "#contact" },
+    { "label": "Resume", "href": "./resume.pdf", "isDownload": true, "downloadFileName": "Arshdeep_Singh_Resume.pdf" }
+  ],
+  "contact": {
+    "email": "arshdeepgtbit@gmail.com",
+    "phone": "+91-8799793855",
+    "githubUrl": "https://github.com/arshdeepsingh2003",
+    "linkedinUrl": "https://www.linkedin.com/in/er-arshdeep-singh-7168a937a/",
+    "resumeUrl": "./resume.pdf"
+  }
+}

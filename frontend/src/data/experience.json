@@ -1,59 +1,66 @@
-[
-  {
-    "id": "zigly",
-    "company": "Zigly Pet Care",
-    "role": "Full Stack Developer Intern",
-    "location": "New Delhi, India",
-    "duration": "September 2026 – Present",
-    "overview": "Contributing to full-stack development for e-commerce operations, with a focus on order management, inventory workflows, and system integrations. Working across backend services, API integrations, and data processing to improve operational reliability and streamline business processes.",
-    "focusAreas": [
-      "Full-Stack Development",
-      "Order & Inventory Management",
-      "API & System Integration",
-      "Data Processing & Debugging"
-    ],
-    "technologies": [
-      "Node.js",
-      "JavaScript",
-      "REST APIs",
-      "SQL"
-    ]
+{
+  "section": {
+    "eyebrow": "Professional Experience",
+    "title": "Career Journey",
+    "description": "A verified record of full-stack development, AI system integration, and technical research internships across real-world business and research environments."
   },
-  {
-    "id": "globallogic",
-    "company": "GlobalLogic",
-    "role": "Engineering Intern",
-    "location": "New Delhi, India",
-    "duration": "January 2026 – August 2026",
-    "overview": "Contributed to multiple AI and full-stack applications, combining modern web technologies with backend services and AI/ML capabilities. Worked on projects involving AI chatbots, predictive maintenance dashboards, voice-enabled assistants, PPE detection, warehouse surveillance, and digital signage systems. Developed responsive interfaces, integrated REST APIs and AI models, implemented real-time functionality, and supported end-to-end application development and debugging.",
-    "focusAreas": [
-      "Full-Stack Application Development",
-      "AI/ML Integration",
-      "Real-Time Systems",
-      "Backend API Development"
-    ],
-    "technologies": [
-      "React",
-      "Python",
-      "FastAPI",
-      "JavaScript",
-      "Machine Learning",
-      "REST APIs"
-    ]
-  },
-  {
-    "id": "drdo",
-    "company": "Defence Research and Development Organisation (DRDO)",
-    "role": "Research Intern",
-    "location": "New Delhi, India",
-    "duration": "July 2025 – August 2025",
-    "overview": "Contributed to technical research and authored a technical review paper. Presented research findings to senior professionals, strengthening my ability to analyze technical literature, evaluate information, and communicate complex concepts clearly.",
-    "focusAreas": [
-      "Technical Research",
-      "Literature Review",
-      "Technical Documentation",
-      "Research Presentation"
-    ],
-    "technologies": null
-  }
-]
+  "experiences": [
+    {
+      "id": "zigly",
+      "company": "Zigly Pet Care",
+      "role": "Full Stack Developer Intern",
+      "location": "New Delhi, India",
+      "duration": "September 2026 – Present",
+      "overview": "Contributing to full-stack development for e-commerce operations, with a focus on order management, inventory workflows, and system integrations. Working across backend services, API integrations, and data processing to improve operational reliability and streamline business processes.",
+      "focusAreas": [
+        "Full-Stack Development",
+        "Order & Inventory Management",
+        "API & System Integration",
+        "Data Processing & Debugging"
+      ],
+      "technologies": [
+        "Node.js",
+        "JavaScript",
+        "REST APIs",
+        "SQL"
+      ]
+    },
+    {
+      "id": "globallogic",
+      "company": "GlobalLogic",
+      "role": "Engineering Intern",
+      "location": "New Delhi, India",
+      "duration": "January 2026 – August 2026",
+      "overview": "Contributed to multiple AI and full-stack applications, combining modern web technologies with backend services and AI/ML capabilities. Worked on projects involving AI chatbots, predictive maintenance dashboards, voice-enabled assistants, PPE detection, warehouse surveillance, and digital signage systems. Developed responsive interfaces, integrated REST APIs and AI models, implemented real-time functionality, and supported end-to-end application development and debugging.",
+      "focusAreas": [
+        "Full-Stack Application Development",
+        "AI/ML Integration",
+        "Real-Time Systems",
+        "Backend API Development"
+      ],
+      "technologies": [
+        "React",
+        "Python",
+        "FastAPI",
+        "JavaScript",
+        "Machine Learning",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "drdo",
+      "company": "Defence Research and Development Organisation (DRDO)",
+      "role": "Research Intern",
+      "location": "New Delhi, India",
+      "duration": "July 2025 – August 2025",
+      "overview": "Contributed to technical research and authored a technical review paper. Presented research findings to senior professionals, strengthening my ability to analyze technical literature, evaluate information, and communicate complex concepts clearly.",
+      "focusAreas": [
+        "Technical Research",
+        "Literature Review",
+        "Technical Documentation",
+        "Research Presentation"
+      ],
+      "technologies": null
+    }
+  ]
+}

@@ -153,4 +153,55 @@ Work on one phase at a time and wait for approval before moving on.
 - [x] Streamlined Layout: Cleaned up unused imports and icons (`BarChart3`, `Code2`, `Terminal`, `Server`, `Workflow`, `rawDisciplinesData`, `DisciplinesData`, `CardShell`), allowing the About introduction content and action CTAs to breathe in a balanced, spacious container.
 - [x] Clean Validation: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and production build with `npm run build` (1616 modules transformed in 8.82s).
 
+## Phase 18 — Navbar Skills Option & Section Reordering
+- [x] Navbar Skills Option: Added `{ label: 'Skills', href: '#skills' }` to `navItems` in `src/config/brand.ts` and structured items to match page hierarchy (`About`, `Skills`, `Projects`, `Experience`, `Contact`, `Resume`).
+- [x] Section Reordering: Reordered sections in `src/App.tsx` so that `Projects` is positioned immediately before `Experience` (Career Journey).
+- [x] Active Section Synchronization: Updated `useActiveSection` hook and `Header.tsx` to monitor section anchors in the updated DOM sequence (`['about', 'skills', 'projects', 'experience', 'contact']`).
+- [x] Visual Alternation & Anchor Cleanup: Swapped section background styling so that `Projects` (`bg-surface/30 dark:bg-[#121815]/50`) and `Experience` (`bg-warm-ivory dark:bg-[#0F1412]`) maintain alternating contrast with adjacent sections, and removed duplicate legacy `#about` anchor span from `Experience.tsx`.
+## Phase 19 — Official Resume Integration & Verified Contact Configuration
+- [x] Integrate Official Resume PDF: Sourced the user's authentic resume PDF (`Arshdeep_web_resume.pdf`, 73 KB) into `frontend/public/resume.pdf` and `frontend/dist/resume.pdf` using dedicated `copy-resume` script.
+- [x] Configure Verified Contact Details: Updated `brandConfig.contact` in `src/config/brand.ts` with genuine contact details extracted from the resume:
+  - Email: `arshdeepgtbit@gmail.com`
+  - Phone: `+91-8799793855`
+  - GitHub: `https://github.com/arshdeepsingh2003`
+  - LinkedIn: `https://linkedin.com/in/arshdeep-singh-7168a937a`
+  - Resume: `./resume.pdf`
+- [x] Contact Section & Footer Channel Updates: Updated `Contact.tsx` and `Footer.tsx` to display the active email with copy and compose actions, direct phone row with `tel:` link, and verified external profiles for GitHub and LinkedIn.
+- [x] Clean Verification: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and production build `npm run build` (1616 modules transformed in 9.59s).
+
+## Phase 20 — Scroll Restoration & Refresh Navigation to About Section
+- [x] Scroll Restoration Configuration: Configured `history.scrollRestoration = 'manual'` in early inline `<script>` in `frontend/index.html` and bound `beforeunload` to reset scroll to top, preventing browser cached scroll coordinates on reload.
+- [x] On-Mount Navigation to About: Added mount effect in `frontend/src/App.tsx` using `scrollIntoView` and `window.scrollTo(0, 0)` with double-frame synchronization, guaranteeing immediate navigation to `#about` whenever the user refreshes or initialises the page.
+- [x] URL Hash Alignment: Synchronized URL state with `window.history.replaceState(null, '', '#about')` on refresh, keeping browser history and navbar active section tracker cleanly anchored to `#about`.
+- [x] In-Session Navigation Preservation: Preserved smooth scrolling and interaction for on-page navigation clicks (`#skills`, `#projects`, `#experience`, `#contact`) and regular viewport scrolling.
+- [x] Clean Verification: Passed `npm run lint` (0 errors), `npm run typecheck` (0 errors), and production build `npm run build` (1616 modules transformed in 9.40s).
+
+## Phase 21 — Component JSON Data Externalization
+- [x] Dedicated JSON Data Files: Created modular JSON files under `frontend/src/data/` for every UI component so all copy, links, headlines, and metadata can be edited without modifying TSX code:
+  - `about.json`: Eyebrow, headline, headline accent, bio greeting, name, role intro, brand badge, description, CTA buttons, and capability highlight items.
+  - `skills.json`: Section heading metadata (eyebrow, title, description) and 6 verified skill categories with individual skill tags.
+  - `projects.json`: Section heading metadata (eyebrow, title, description, empty state copy) and 6 verified portfolio projects.
+  - `experience.json`: Section heading metadata (eyebrow, title, description) and 3 verified career journey internship entries with focus areas and tooling tags.
+  - `contact.json`: Section heading metadata, 4 communication channel cards (email, GitHub, LinkedIn, Résumé) with titles, subtitles, descriptions, button labels, clipboard feedback, and 3 communication guarantees.
+  - `header.json`: Brand logo alt text, theme toggle ARIA labels, mobile menu open/close ARIA labels, role subtitle, and mobile drawer CTA button.
+  - `footer.json`: Subtitle, status badge copy, navigation heading, direct contact heading, channel labels, copyright notice, and back-to-top button labels.
+  - `brand.json`: Wordmark, site title, meta description, owner display name, logo URL, navigation items, and verified contact links.
+- [x] Component Dynamic Integration: Refactored `About.tsx`, `Skills.tsx`, `Projects.tsx`, `ProjectList.tsx`, `Experience.tsx`, `Contact.tsx`, `Header.tsx`, `MobileNav.tsx`, and `Footer.tsx` to consume their respective JSON files while maintaining full backward-compatibility and zero layout shift.
+- [x] Config Integration: Updated `src/config/brand.ts` to source directly from `brand.json` with strict TypeScript types preserved.
+- [x] Optional Brand Badge Support: Enhanced `About.tsx` to conditionally render the brand badge pill element only when `brandBadge` is provided in `about.json`, preventing empty white placeholder pills from appearing when the field is omitted.
+- [x] Clean Verification: Passed `npm run typecheck` (0 errors), `npm run lint` (0 errors), and production build `npm run build` (1621 modules transformed in 9.42s).
+
+## Phase 22 — Minimal Contact Strip & Hero Social Contact Integration
+- [x] Hero Capability Row Contact Icons: Added 4 small clickable icons (LinkedIn, GitHub, Phone, Email) directly to the bottom capability highlights row in `About.tsx`, separated by a subtle vertical divider matching the visual layout of Screenshot 1.
+- [x] Minimal Contact Strip: Replaced the large cards, lengthy descriptions, status badges, and duplicate Resume card in `Contact.tsx` with a clean, minimal, horizontal contact strip matching Screenshot 2.
+- [x] Four Direct Contact Channels:
+  - LinkedIn: Clickable icon box + `LinkedIn` serif label pointing to `https://www.linkedin.com/in/er-arshdeep-singh-7168a937a/`.
+  - GitHub: Clickable icon box + `GitHub` serif label pointing to verified repo profile `https://github.com/arshdeepsingh2003`.
+  - Phone: Clickable icon box + `Call` serif label + `+91-8799793855` linked to `tel:+91-8799793855`.
+  - Email: Clickable icon box + `Email` serif label + `arshdeepgtbit@gmail.com` linked to `mailto:arshdeepgtbit@gmail.com`.
+- [x] Typography & Contrast Visibility: Enhanced font size of phone number (`+91-8799793855`) and email address (`arshdeepgtbit@gmail.com`) to ~16–18px (`text-base sm:text-[17px]`) with medium weight (500) and high contrast against the beige background.
+- [x] Responsive Wrapping & Spacing: Ensured smooth responsive wrapping on mobile viewports with zero horizontal overflow, hiding desktop dividers on narrow screens and preserving consistent spacing.
+- [x] Brand Data Synchronization: Updated `brand.json` with the exact verified LinkedIn profile URL.
+- [x] Verification: Passed standalone typecheck (`npm run typecheck`), linting (`npm run lint`), and production build (`npm run build`) with 0 errors.
+
 
